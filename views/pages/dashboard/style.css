@@ -1,0 +1,22 @@
+html {
+    font-size: 62.5%;
+    font-family: 'Roboto', sans-serif;
+}
+
+.dashboard {
+    height: 100vh;
+    display: flex;
+}
+
+.menu {
+    width: 20vw;
+    display: flex;
+    flex-direction: column;
+    background-color: #0984e3;
+}
+
+.view {
+    flex: 1;
+    overflow: auto;
+    background-color: #dfe6e9;
+}
