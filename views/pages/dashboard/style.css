@@ -3,6 +3,8 @@
     --city-lights: #dfe6e9;
     --chi-gong: #d63031;
     --american-river: #636e72;
+    --shadow-transparent: rgba(0, 0, 0, 0.5);
+    --shadow-text: 0 .8rem .8rem var(--shadow-transparent);
 }
 
 html {
@@ -17,12 +19,12 @@ html {
 
 .menu {
     width: 22vw;
-    display: flex;
-    flex-direction: column;
+    display: grid;
     background-color: var(--electron-blue);
 }
 
 .menu__info {
+    align-self: start;
     display: flex;
     flex-direction: column;
     padding: 2.8rem 1.8rem;
@@ -40,6 +42,29 @@ html {
     margin-top: 1.2rem;
     border-radius: 2rem;
     padding: .8rem;
+}
+
+.menu__info--name {
+    align-self: center;
+}
+
+.menu__logout {
+    align-self: end;
+    display: flex;
+    justify-content: center;
+    padding: 2.4rem 1.6rem;
+}
+
+.menu__logout--button {
+    font-size: 12pt;
+    color: var(--city-lights);
+    background-color: transparent;
+    border: none;
+    outline: 0;
+}
+
+.menu__logout--button:hover {
+    text-shadow: var(--shadow-text);
 }
 
 .view {
