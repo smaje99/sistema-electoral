@@ -1,5 +1,16 @@
+import { BrowserRouter as Router } from "react-router-dom";
+
+import AppRouter from "@Routers/AppRouter";
+import { AuthProvider } from '@Auth/AuthProvider';
+
 const App = () => (
-    <h1>Sistema Electoral</h1>
+    <>
+        <Router>
+            <AuthProvider>
+                <AppRouter />
+            </AuthProvider>
+        </Router>
+    </>
 )
 
 export default App;
