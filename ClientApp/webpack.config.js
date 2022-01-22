@@ -13,6 +13,7 @@ const resolve = {
     alias: {
         '@Auth': path.resolve(__dirname, 'src', 'auth'),
         '@Components': path.resolve(__dirname, 'src', 'components'),
+        '@Helpers': path.resolve(__dirname, 'src', 'helpers'),
         '@Pages': path.resolve(__dirname, 'src', 'pages'),
         '@Routers': path.resolve(__dirname, 'src', 'routers')
     },
