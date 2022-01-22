@@ -5,6 +5,7 @@ import PrivateRoutes from './PrivateRoutes';
 import Layout from '@Components/Layout';
 
 import Dashboard from '@Pages/Dashboard';
+import NotFound from '@Pages/NotFound';
 
 const AppRouter = () => (
     <Routes>
@@ -14,6 +15,8 @@ const AppRouter = () => (
                     <Route index element={<Dashboard />} />
                 </Route>
             </Route>
+
+            <Route path="*" element={<NotFound />} />
         </Route>
     </Routes>
 )
