@@ -31,7 +31,10 @@ const Navigation = () => {
 
             <section className="navigation__menu">
                 <ul className="navigation__menu--list">
-
+                    <Item {...items.info} />
+                    {permissions.map(permission => (
+                        <Item {...items[permission]} key={permission} />
+                    ))}
                 </ul>
             </section>
 
