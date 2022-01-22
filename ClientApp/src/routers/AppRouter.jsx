@@ -11,7 +11,8 @@ import NotFound from '@Pages/NotFound';
 
 const AppRouter = () => (
     <Routes>
-        <Route path="/" element={<Home />} >
+        <Route path="/">
+            <Route index element={<Home />} />
             <Route path="login" element={<Login />} />
 
             <Route element={<PrivateRoutes />}>
