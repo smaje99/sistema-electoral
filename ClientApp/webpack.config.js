@@ -23,7 +23,7 @@ const rulesBabel = mode => ({
     use: {
         loader: 'babel-loader',
         options: {
-            preset: [
+            presets: [
                 ['@babel/preset-env', {
                     useBuiltIns: 'usage',
                     corejs: 3.20
