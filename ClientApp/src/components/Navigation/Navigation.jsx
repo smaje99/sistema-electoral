@@ -8,7 +8,12 @@ import './style.css';
 
 const Item = ({ name, route }) => (
     <li className="navigation__menu--item">
-        <NavLink className="navigation__menu--link" to={route}>
+        <NavLink
+            className={({ isActive }) => (
+                'navigation__menu--'.concat(isActive ? 'active' : 'link')
+            )}
+            to={route}
+        >
             {name}
         </NavLink>
     </li>
