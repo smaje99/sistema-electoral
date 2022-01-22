@@ -1,5 +1,10 @@
 .dashboard {
     flex: 1;
+    display: flex;
     overflow: auto;
     background-color: var(--city-lights);
+}
+
+.dashboard > * {
+    flex: 1;
 }

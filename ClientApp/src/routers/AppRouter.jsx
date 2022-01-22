@@ -9,6 +9,7 @@ import Home from '@Pages/Home';
 import Info from '@Pages/Info';
 import Login from '@Pages/Login';
 import NotFound from '@Pages/NotFound';
+import Welcome from '@Pages/Welcome';
 
 const AppRouter = () => (
     <Routes>
@@ -19,6 +20,7 @@ const AppRouter = () => (
             <Route element={<PrivateRoutes />}>
                 <Route path="dashboard" element={<Layout />}>
                     <Route element={<Dashboard />}>
+                        <Route index element={<Welcome />} />
                         <Route path="info" element={<Info />} />
                     </Route>
                 </Route>
