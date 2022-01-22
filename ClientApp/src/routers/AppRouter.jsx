@@ -6,6 +6,7 @@ import Layout from '@Components/Layout';
 
 import Dashboard from '@Pages/Dashboard';
 import Home from '@Pages/Home';
+import Info from '@Pages/Info';
 import Login from '@Pages/Login';
 import NotFound from '@Pages/NotFound';
 
@@ -17,7 +18,9 @@ const AppRouter = () => (
 
             <Route element={<PrivateRoutes />}>
                 <Route path="dashboard" element={<Layout />}>
-                    <Route index element={<Dashboard />} />
+                    <Route element={<Dashboard />}>
+                        <Route path="info" element={<Info />} />
+                    </Route>
                 </Route>
             </Route>
 
