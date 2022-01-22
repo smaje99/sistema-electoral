@@ -1,3 +1,12 @@
+:root {
+    --electron-blue: #0984e3;
+    --city-lights: #dfe6e9;
+    --chi-gong: #d63031;
+    --american-river: #636e72;
+    --shadow-transparent: rgba(0, 0, 0, 0.5);
+    --shadow-text: 0 .8rem .8rem var(--shadow-transparent);
+}
+
 html {
     font-size: 62.5%;
     font-family: 'Roboto', sans-serif;
