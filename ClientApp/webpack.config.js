@@ -11,7 +11,7 @@ const isDevelopment = mode => mode === 'development';
 
 const resolve = {
     alias: {
-
+        '@Components': path.resolve(__dirname, 'src', 'components')
     },
     extensions: ['.jsx', '...'],
     plugins: [ new DirectoryNamedWebpackPlugin() ]
