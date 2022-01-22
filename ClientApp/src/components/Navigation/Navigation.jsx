@@ -16,7 +16,10 @@ const Item = ({ name, route }) => (
 
 
 const Navigation = () => {
-    const { user: { name, role, permissions } } = useAuth();
+    const {
+        logout,
+        user: { name, role, permissions }
+    } = useAuth();
 
     return (
         <aside className="navigation">
@@ -28,12 +31,16 @@ const Navigation = () => {
 
             <section className="navigation__menu">
                 <ul className="navigation__menu--list">
-                    
+
                 </ul>
             </section>
 
             <section className="navigation__logout">
-                <Link to={routes.home} className="navigation__logout--button">
+                <Link
+                    to={routes.home}
+                    onClick={logout}
+                    className="navigation__logout--button"
+                >
                     Cerrar sesión
                 </Link>
             </section>
