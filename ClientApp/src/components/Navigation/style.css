@@ -1,0 +1,43 @@
+.navigation {
+    width: 22vw;
+    display: grid;
+    background-color: var(--electron-blue);
+}
+
+.profile {
+    align-self: start;
+    display: flex;
+    flex-direction: column;
+    padding: 2.8rem 1.8rem;
+}
+
+.profile > * {
+    font-size: 13.5pt;
+    color: var(--city-lights);
+}
+
+.profile--role {
+    font-size: 12pt;
+    background-color: var(--chi-gong);
+    text-align: center;
+    margin-top: 1.2rem;
+    border-radius:2rem;
+    padding: .8rem;
+}
+
+.navigation__logout {
+    align-self: end;
+    display: flex;
+    justify-content: center;
+    padding: 2.4rem 1.6rem;
+}
+
+.navigation__logout--button {
+    font-size: 12pt;
+    color: var(--city-lights);
+    text-decoration: none;
+}
+
+.navigation__logout--button:hover {
+    text-shadow: var(--shadow-text);
+}

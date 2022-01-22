@@ -1,7 +1,10 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 import useAuth from '@Auth/useAuth';
 import items from '@Helpers/items';
+import routes from '@Helpers/routes';
+
+import './style.css';
 
 const Item = ({ name, route }) => (
     <li className="navigation__menu--item">
@@ -25,17 +28,14 @@ const Navigation = () => {
 
             <section className="navigation__menu">
                 <ul className="navigation__menu--list">
-                    <Item {...items('info')} />
-                    {permissions.map(permission => (
-                        <Item key={permission} {...items[permission]} />
-                    ))}
+                    
                 </ul>
             </section>
 
             <section className="navigation__logout">
-                <button className="navigation__logout--button">
+                <Link to={routes.home} className="navigation__logout--button">
                     Cerrar sesión
-                </button>
+                </Link>
             </section>
         </aside>
     )

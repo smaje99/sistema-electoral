@@ -5,8 +5,8 @@ import Navigation from '@Components/Navigation';
 const Layout = () => {
     return (
         <>
-            <Outlet />
             <Navigation />
+            <Outlet />
         </>
     )
 }
