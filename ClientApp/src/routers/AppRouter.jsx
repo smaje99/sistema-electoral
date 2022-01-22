@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 
 import PrivateRoutes from './PrivateRoutes';
 
-import Layout from '@Component/Layout';
+import Layout from '@Components/Layout';
 
 import Dashboard from '@Pages/Dashboard';
 
