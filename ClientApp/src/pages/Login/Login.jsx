@@ -72,7 +72,7 @@ const Login = () => {
             </div>
             <section className="login__forget">
                 <Link to={routes.passwordReset} className="login__forget--link">
-                    ¿Olvidaste las contraseña?
+                    ¿Olvidaste tu contraseña?
                 </Link>
             </section>
             <section className="login__account">
