@@ -61,6 +61,12 @@
     caret-color: var(--dracula-orchid);
 }
 
+.login--content__field--input:-webkit-autofill,
+.login--content__field--input:-webkit-autofill:hover,
+.login--content__field--input:-webkit-autofill:focus {
+    transition: all 0s 50000s;
+}
+
 .login--content__field--btn {
     border-color: transparent;
     background-color: transparent;
@@ -72,6 +78,7 @@
     font-size: 12pt;
     color: var(--city-lights);
     background-color: var(--dracula-orchid);
+    cursor: pointer;
 }
 
 .login__forget--link,
