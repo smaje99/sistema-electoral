@@ -1,11 +1,13 @@
 :root {
     --electron-blue: #0984e3;
     --city-lights: #dfe6e9;
+    --soothing-breeze: #b2bec3;
     --chi-gong: #d63031;
     --american-river: #636e72;
     --dracula-orchid: #2d3436;
     --shadow-transparent: rgba(0, 0, 0, 0.5);
     --shadow-text: 0 .8rem .8rem var(--shadow-transparent);
+    --shadow-component: 0 .4rem .4rem var(--shadow-transparent);
 }
 
 html {
