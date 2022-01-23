@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react';
+import { Helmet } from 'react-helmet';
 import { FaEye, FaEyeSlash, FaUser, FaUserLock } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -25,6 +26,11 @@ const Login = () => {
     }
 
     return (
+        <>
+        <Helmet>
+            <title>Iniciar Sesión | Sistema Electoral</title>
+        </Helmet>
+
         <div className="login">
             <div className="login--shadow">
                 <form className="login--content" onSubmit={handleLogin}>
@@ -84,6 +90,7 @@ const Login = () => {
                 </Link>
             </section>
         </div>
+        </>
     )
 }
 
