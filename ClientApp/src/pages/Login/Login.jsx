@@ -91,7 +91,7 @@ const Login = () => {
                 <span className="login__account--brand">
                     Crea una cuenta para tu Institución Educativa
                 </span>
-                <Link to={routes.account} className="login__account--link">
+                <Link to={routes.signup} className="login__account--link">
                     Regístrate
                 </Link>
             </section>
