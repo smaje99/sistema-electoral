@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { FaEye, FaEyeSlash, FaUser, FaUserLock } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
 
 import routes from '@Helpers/routes';
 
@@ -14,6 +15,11 @@ const Login = () => {
     const navigate = useNavigate();
 
     const [showPassword, setShowPassword] = useState(false);
+
+    const handleInvalidUser = (msg) => toast.error(msg, {
+        position: toast.POSITION.BOTTOM_RIGHT,
+        className: 'toast'
+    });
 
     const handleShowPassword = (e) => {
         e.preventDefault();
@@ -90,6 +96,8 @@ const Login = () => {
                 </Link>
             </section>
         </div>
+
+        <ToastContainer />
         </>
     )
 }
