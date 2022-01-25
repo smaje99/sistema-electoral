@@ -81,14 +81,12 @@
     cursor: pointer;
 }
 
-.login__forget--link,
 .login__account--brand,
 .login__account--link {
     display: inline-block;
     font-size: 12pt;
 }
 
-.login__forget--link,
 .login__account--link {
     text-decoration: none;
     color: var(--electron-blue);

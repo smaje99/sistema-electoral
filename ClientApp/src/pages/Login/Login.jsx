@@ -82,11 +82,6 @@ const Login = () => {
                     />
                 </form>
             </div>
-            <section className="login__forget">
-                <Link to={routes.passwordReset} className="login__forget--link">
-                    ¿Olvidaste tu contraseña?
-                </Link>
-            </section>
             <section className="login__account">
                 <span className="login__account--brand">
                     Crea una cuenta para tu Institución Educativa
