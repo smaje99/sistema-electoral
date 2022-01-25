@@ -1,3 +1,6 @@
 import PrivateLayout from './PrivateLayout';
+import PublicLayout from './PublicLayout';
 
-export { PrivateLayout };
+import './styles.css';
+
+export { PrivateLayout, PublicLayout };

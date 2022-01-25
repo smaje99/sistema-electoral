@@ -16,11 +16,6 @@ html {
     font-family: 'Roboto', sans-serif;
 }
 
-#app {
-    height: 100vh;
-    display: flex;
-}
-
 .toast {
     font: 12pt Ubuntu;
     color: var(--dracula-orchid);
