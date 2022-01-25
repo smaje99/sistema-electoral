@@ -1,4 +1,9 @@
 import { Helmet } from 'react-helmet';
+import { Link } from 'react-router-dom';
+
+import routes from '@Helpers/routes';
+
+import './styles.css';
 
 const Home = () => (
     <>
@@ -6,7 +11,14 @@ const Home = () => (
         <title>Inicio | Sistema Electoral</title>
     </Helmet>
 
-    <h1>Página de Inicio</h1>
+    <main className='register'>
+        <span className="register__title">
+            ¿Deseas tener un sistema electoral para su institución educativa?
+        </span>
+        <Link to={routes.signup} className="register__button">
+            CREAR CUENTA
+        </Link>
+    </main>
     </>
 )
 
