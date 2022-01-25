@@ -1,8 +1,10 @@
 import { Outlet } from 'react-router-dom';
 
+import NavigationBar from '@Components/NavigationBar';
+
 const PublicLayout = () => (
     <div className="layout-public">
-        <h1>layout</h1>
+        <NavigationBar />
         <Outlet />
     </div>
 )

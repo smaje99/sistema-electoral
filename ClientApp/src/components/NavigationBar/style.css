@@ -1,0 +1,26 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 3.6rem;
+    background-color: var(--electron-blue)
+}
+
+.navbar > * {
+    color: var(--dracula-orchid);
+    text-decoration: none;
+}
+
+.navbar__brand {
+    font-size: 14pt;
+    font-weight: 900;
+    text-shadow: var(--shadow-text);
+}
+
+.navbar__login {
+    font-size: 12pt;
+    padding: .8rem 2rem;
+    border-radius: 2.8rem;
+    background-color: var(--light-greenish-blue);
+    box-shadow: var(--shadow-component);
+}
