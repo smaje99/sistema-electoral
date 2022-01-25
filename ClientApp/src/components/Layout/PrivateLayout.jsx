@@ -2,7 +2,7 @@ import { Outlet } from 'react-router-dom';
 
 import Navigation from '@Components/Navigation';
 
-const Layout = () => {
+const PrivateLayout = () => {
     return (
         <>
             <Navigation />
@@ -11,4 +11,4 @@ const Layout = () => {
     )
 }
 
-export default Layout;
+export default PrivateLayout;
