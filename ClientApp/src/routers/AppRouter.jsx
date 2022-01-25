@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 
 import PrivateRoutes from './PrivateRoutes';
 
-import { PrivateLayout } from '@Components/Layout';
+import { PrivateLayout, PublicLayout } from '@Components/Layout';
 
 import Dashboard from '@Pages/Dashboard';
 import Home from '@Pages/Home';
@@ -14,8 +14,10 @@ import Welcome from '@Pages/Welcome';
 const AppRouter = () => (
     <Routes>
         <Route path="/">
-            <Route index element={<Home />} />
-            <Route path="login" element={<Login />} />
+            <Route element={<PublicLayout />}>
+                <Route index element={<Home />} />
+                <Route path="login" element={<Login />} />
+            </Route>
 
             <Route element={<PrivateRoutes />}>
                 <Route path="dashboard" element={<PrivateLayout />}>
