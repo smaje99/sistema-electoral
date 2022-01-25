@@ -13,5 +13,9 @@ namespace SistemaElectoral.Models
         public DateTime electoralEndDate { get; set; }
         public DateTime nominationStartDate { get; set; }
         public DateTime nominationEndDate { get; set; }
+        public bool isAnnouncementReport
+        {
+            get => isCandidateReport && isElectoralReport;
+        }
     }
 }
