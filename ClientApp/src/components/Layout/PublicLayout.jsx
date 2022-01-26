@@ -1,10 +1,10 @@
 import { Outlet } from 'react-router-dom';
 
-import NavigationBar from '@Components/NavigationBar';
+import PublicNavigation from '@Components/Navigation/PublicNavigation';
 
 const PublicLayout = () => (
     <div className="layout-public">
-        <NavigationBar />
+        <PublicNavigation />
         <Outlet />
     </div>
 )

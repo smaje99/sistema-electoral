@@ -4,7 +4,7 @@ import routes from '@Helpers/routes';
 
 import './style.css';
 
-const NavigationBar = () => {
+const PublicNavigation = () => {
 
     return (
         <nav className="navbar">
@@ -18,4 +18,4 @@ const NavigationBar = () => {
     )
 }
 
-export default NavigationBar;
+export default PublicNavigation;

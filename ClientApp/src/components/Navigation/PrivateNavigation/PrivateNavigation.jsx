@@ -20,7 +20,7 @@ const Item = ({ name, route }) => (
 )
 
 
-const Navigation = () => {
+const PrivateNavigation = () => {
     const {
         logout,
         user: { name, role, permissions }
@@ -56,4 +56,4 @@ const Navigation = () => {
     )
 }
 
-export default Navigation;
+export default PrivateNavigation;

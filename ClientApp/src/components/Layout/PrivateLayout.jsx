@@ -1,11 +1,11 @@
 import { Outlet } from 'react-router-dom';
 
-import Navigation from '@Components/Navigation';
+import PrivateNavigation from '@Components/Navigation/PrivateNavigation';
 
 const PrivateLayout = () => {
     return (
         <div className="layout-private">
-            <Navigation />
+            <PrivateNavigation />
             <Outlet />
         </div>
     )
