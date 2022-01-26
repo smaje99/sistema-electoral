@@ -7,3 +7,7 @@
 .layout-public {
     flex-direction: column;
 }
+
+.layout-public {
+    background-color: var(--city-lights);
+}
