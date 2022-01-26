@@ -7,20 +7,22 @@
 }
 
 .navbar > * {
-    color: var(--dracula-orchid);
     text-decoration: none;
 }
 
 .navbar__brand {
     font-size: 14pt;
     font-weight: 900;
+    color: var(--city-lights);
     text-shadow: var(--shadow-text);
+    letter-spacing: 0.24rem;
 }
 
 .navbar__login {
     font-size: 12pt;
     padding: .8rem 2rem;
     border-radius: 2.8rem;
+    color: var(--dracula-orchid);
     background-color: var(--light-greenish-blue);
     box-shadow: var(--shadow-component);
 }
