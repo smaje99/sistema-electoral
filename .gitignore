@@ -21,3 +21,5 @@ msbuild.err
 msbuild.wrn
 packages/
 *.nupkg
+appsettings.*
+appsettings.*.json
