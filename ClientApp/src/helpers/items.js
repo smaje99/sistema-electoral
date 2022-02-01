@@ -1,11 +1,11 @@
 import routes from "./routes";
 
 const item = {
-    info:         { name: 'Información Personal', route: routes.info },
-    candidates:   { name: 'Candidatos',           route: routes.candidates },
-    vote:         { name: 'Votaciones',           route: routes.vote },
-    elections:    { name: 'Elecciones',           route: routes.elections },
-    announcement: { name: 'Convocatoria',         route: routes.announcement}
+    info:         { name: 'Información Personal', route: routes.dashboard.info },
+    candidates:   { name: 'Candidatos',           route: routes.dashboard.candidates },
+    vote:         { name: 'Votaciones',           route: routes.dashboard.vote },
+    elections:    { name: 'Elecciones',           route: routes.dashboard.elections },
+    announcement: { name: 'Convocatoria',         route: routes.dashboard.announcement}
 }
 
 export default item;

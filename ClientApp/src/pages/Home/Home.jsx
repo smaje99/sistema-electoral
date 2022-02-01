@@ -15,7 +15,7 @@ const Home = () => (
         <span className="register__title">
             ¿Deseas tener un sistema electoral para su institución educativa?
         </span>
-        <Link to={routes.signup} className="register__button">
+        <Link to={routes.signup()} className="register__button">
             CREAR CUENTA
         </Link>
     </main>
