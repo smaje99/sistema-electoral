@@ -10,14 +10,17 @@
   "author": "",
   "license": "GPL-3.0",
   "dependencies": {
+    "@hookform/resolvers": "^2.8.8",
     "core-js": "^3.20.3",
     "normalize.css": "^8.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-helmet": "^6.1.0",
+    "react-hook-form": "^7.25.3",
     "react-icons": "^4.3.1",
     "react-router-dom": "^6.2.1",
-    "react-toastify": "^8.1.0"
+    "react-toastify": "^8.1.0",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@babel/core": "^7.16.10",
