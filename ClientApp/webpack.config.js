@@ -15,7 +15,8 @@ const resolve = {
         '@Components': path.resolve(__dirname, 'src', 'components'),
         '@Helpers': path.resolve(__dirname, 'src', 'helpers'),
         '@Pages': path.resolve(__dirname, 'src', 'pages'),
-        '@Routers': path.resolve(__dirname, 'src', 'routers')
+        '@Routers': path.resolve(__dirname, 'src', 'routers'),
+        '@Utils': path.resolve(__dirname, 'src', 'utils')
     },
     extensions: ['.jsx', '...'],
     plugins: [ new DirectoryNamedWebpackPlugin() ]
