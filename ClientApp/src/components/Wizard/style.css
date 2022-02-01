@@ -1,0 +1,50 @@
+.wizard {
+    display: flex;
+    user-select: none;
+}
+
+.wizard__step {
+    flex: 1;
+    text-align: center;
+}
+
+.wizard__dot {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wizard__title,
+.wizard__bullet--number {
+    font-size: 14pt;
+    font-weight: 600;
+    color: var(--dracula-orchid);
+}
+
+.wizard__bullet {
+    width: 2.8rem;
+    height: 2.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: .8rem;
+    border: .2rem solid var(--dracula-orchid);
+    border-radius: 50%;
+    transition: .2s;
+}
+
+.wizard__connector {
+    flex: 1;
+    content: '';
+    height: .2rem;
+    background-color: var(--dracula-orchid);
+}
+
+.wizard__step:first-child .wizard__connector:first-child,
+.wizard__step:last-child .wizard__connector:last-child {
+    background-color: transparent;
+}
+
+.wizard--active > * {
+    background-color: #fff;
+}
