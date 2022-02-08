@@ -1,7 +1,7 @@
 namespace SistemaElectoral.Models;
 
-internal class InstituteModel
+public class Institute
 {
     public int IdInstitute { get; set; }
-    public int Name { get; set; }
+    public string Name { get; set; } = "";
 }
