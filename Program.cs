@@ -1,6 +1,3 @@
-var builder = WebApplication.CreateBuilder(args);
-var app = builder.Build();
+using SistemaElectoral.Services;
 
-app.MapGet("/", () => "Hello World!");
-
-app.Run();
+Console.WriteLine(UserService.GetUser("s.maje@lasalle.com"));
