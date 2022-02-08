@@ -32,4 +32,18 @@ public class UserService
 
         return user;
     }
+
+    public static bool Login(string email, string password)
+    {
+        MySqlParameter[] parameters = {
+            UserSchema.EmailParameter(email),
+            UserSchema.PasswordParameter(password)
+        };
+        var table = Database.Database.QueryCallStoredProcedure("spUser_Get", parameters);
+        var data = table.Select()[0];
+
+        bool isLogin = ((int) data[0]) > 0;
+
+        return isLogin;
+    }
 }
