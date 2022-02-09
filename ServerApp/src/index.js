@@ -22,7 +22,7 @@ app.use('/api', require('./routes'));
 app.use(express.static(path.join(__dirname, '..', '..', 'ClientApp', 'dist')));
 
 // Catch 404
-
+app.use(require('./middleware/notFound.handler'));
 
 // Errors middlewares
 
