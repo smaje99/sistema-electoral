@@ -3,6 +3,10 @@ const morgan = require('morgan');
 const cors = require('cors');
 const path = require('path');
 
+const {
+    logErrors, wrapErrors, errorHandler
+} = require('./middleware/error.handler');
+
 const { Port } = require('./utils/config');
 
 const app = express();
@@ -25,7 +29,9 @@ app.use(express.static(path.join(__dirname, '..', '..', 'ClientApp', 'dist')));
 app.use(require('./middleware/notFound.handler'));
 
 // Errors middlewares
-
+app.use(logErrors);
+app.use(wrapErrors);
+app.use(errorHandler);
 
 // Starting server
 app.listen(app.get('port'), () => (
