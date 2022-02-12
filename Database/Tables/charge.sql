@@ -1,0 +1,4 @@
+CREATE TABLE `charge` (
+  `idCharge` int PRIMARY KEYNOT NULL AUTO_INCREMENT UNIQUE,
+  `name` varchar(25) NOT NULL UNIQUE
+)

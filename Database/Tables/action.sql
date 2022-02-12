@@ -1,0 +1,4 @@
+CREATE TABLE `action` (
+  `idAction` int PRIMARY KEY NOT NULL AUTO_INCREMENT UNIQUE,
+  `name` varchar(25) NOT NULL UNIQUE
+)
