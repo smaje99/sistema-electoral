@@ -16,7 +16,7 @@ app.set('port', Port);
 
 // Middlewares
 app.use(cors());
-app.use(morgan());
+app.use(morgan('dev'));
 app.use(express.json());
 
 // Routes
