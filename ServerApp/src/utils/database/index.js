@@ -1,6 +1,6 @@
 const mysql = require('mysql2/promise');
 
-const { ConnectionOptions } = require('../utils/config');
+const { ConnectionOptions } = require('../config');
 
 /**
  * Manage secure connection and disconnection to the database,

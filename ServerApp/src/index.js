@@ -5,7 +5,7 @@ const path = require('path');
 
 const {
     logErrors, wrapErrors, errorHandler
-} = require('./middleware/error.handler');
+} = require('./utils/middleware/error.handler');
 
 const { Port } = require('./utils/config');
 
@@ -26,7 +26,7 @@ app.use('/api', require('./routes'));
 app.use(express.static(path.join(__dirname, '..', '..', 'ClientApp', 'dist')));
 
 // Catch 404
-app.use(require('./middleware/notFound.handler'));
+app.use(require('./utils/middleware/notFound.handler'));
 
 // Errors middlewares
 app.use(logErrors);

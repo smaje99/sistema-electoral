@@ -1,6 +1,6 @@
 const boom = require('@hapi/boom');
 
-const { Dev } = require('../utils/config');
+const { Dev } = require('../config');
 
 /**
  * If the environment is development it returns the error

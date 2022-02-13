@@ -1,7 +1,6 @@
 const boom = require('@hapi/boom');
 
-const { query } = require('../database');
-
+const { query } = require('../utils/database');
 const { LoginSessionError } = require('../utils/errors');
 
 const {

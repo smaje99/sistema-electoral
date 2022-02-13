@@ -4,7 +4,7 @@ const service = require('../services/userSession.service');
 
 const { LoginSessionError } = require('../utils/errors');
 const schema = require('../utils/schemas/login.schema');
-const validation = require('../middleware/validation.handler');
+const validation = require('../utils/middleware/validation.handler');
 
 router.post('/', validation(schema), async (req, res, next) => {
     const { email, password } = req.body;
