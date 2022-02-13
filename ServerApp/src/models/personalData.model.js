@@ -1,4 +1,4 @@
-export default class PersonalData {
+class PersonalData {
     constructor({ idPersonalData, dni, name, gender, phone }) {
         this.idPersonalData = idPersonalData;
         this.dni = dni;
@@ -7,3 +7,5 @@ export default class PersonalData {
         this.phone = phone;
     }
 }
+
+module.exports = PersonalData;

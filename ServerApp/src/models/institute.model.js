@@ -1,4 +1,4 @@
-export default class Institute {
+class Institute {
     constructor({ idInstitute, nit, name, address, email, city }) {
         this.idInstitute = idInstitute;
         this.nit = nit;
@@ -8,3 +8,5 @@ export default class Institute {
         this.city = city;
     }
 }
+
+module.exports = Institute;
