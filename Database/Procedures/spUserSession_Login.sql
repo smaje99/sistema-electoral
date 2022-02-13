@@ -3,7 +3,7 @@ CREATE PROCEDURE election.spUserSession_Login(
     _password varchar(50)
 )
 BEGIN
-	SET @isAuth := (SELECT election.fnCheckPassword(_email, _password));
+	SET @isAuth := (SELECT election.fnCheckCredentials(_email, _password));
 
 	IF @isAuth = 1 THEN
 		CALL spUser_Get(_email);

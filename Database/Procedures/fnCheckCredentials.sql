@@ -1,4 +1,4 @@
-CREATE FUNCTION `election`.`fnCheckPassword`(
+CREATE FUNCTION `election`.`fnCheckCredentials`(
     _email varchar(50),
     _password varchar(50)
 ) RETURNS tinyint(1)
