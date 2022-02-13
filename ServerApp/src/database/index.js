@@ -1,9 +1,6 @@
-const mysql = require('mysql2');
+const mysql = require('mysql2/promise');
 
 const { ConnectionOptions } = require('../utils/config');
-
-/** Connection to the database. */
-const connection = mysql.createConnection(ConnectionOptions);
 
 /**
  * Manage secure connection and disconnection to the database,
@@ -11,10 +8,10 @@ const connection = mysql.createConnection(ConnectionOptions);
  * @param callback - A function that makes the request to the database.
  * @returns The connection object.
  */
-function connectionManager(callback) {
+async function connectionManager(callback) {
+    const connection = await mysql.createConnection(ConnectionOptions);
     try {
-        connection.connect();
-        return callback(connection);
+        return await callback(connection);
     } catch (error) {
         throw new Error(error.message);
     } finally {
@@ -22,12 +19,12 @@ function connectionManager(callback) {
     }
 }
 
-function query(queryString, callback) {
-    return connectionManager(conn => conn.query(queryString, callback));
+async function query(queryString) {
+    return connectionManager(conn => conn.query(queryString));
 }
 
-function execute(executeString, callback) {
-    return connectionManager(conn => conn.execute(executeString, callback));
+async function execute(executeString) {
+    return connectionManager(conn => conn.execute(executeString));
 }
 
 module.exports = { query, execute }

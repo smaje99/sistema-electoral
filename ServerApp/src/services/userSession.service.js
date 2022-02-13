@@ -11,16 +11,12 @@ const {
 class UserSessionService {
     async login(email, password) {
         try {
-            const [[data]] = await new Promise((resolve, reject) => {
-                query(
-                    `CALL spUserSession_Login("${email}", "${password}")`,
-                    (err, result) => !!err ? reject(err) : resolve(result)
-                )
-            })
+            const [[[data]]] = await query(
+                `CALL spUserSession_Login("${email}", "${password}")`
+            )
 
-            if (data?.isAuth == 0) {
+            if (data?.isAuth == 0)
                 throw new LoginSessionError("Credenciales Invalidas", 203);
-            }
 
             const user = new User({
                 idUser: data.idUser,
