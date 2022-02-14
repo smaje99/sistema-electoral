@@ -5,8 +5,12 @@ import './style.css';
 const Wizard = () => {
     const { currentIndex, items } = useWizard();
 
-    const wizardDotClass = index => (
-        (index == currentIndex ? 'wizard--active ' : '').concat('wizard__dot')
+    const wizardBulletClass = index => (
+        (index == currentIndex ? 'wizard--active ' : '').concat('wizard__bullet')
+    )
+
+    const wizardConnectClass = index => (
+        (1 < index < currentIndex ? 'wizard--active ' : '').concat('wizard__connector')
     )
 
     return (
@@ -14,12 +18,12 @@ const Wizard = () => {
             {Array.from(items.entries()).map(([index, value]) => (
                 <div className="wizard__step" key={index}>
                     <span className="wizard__title">{value}</span>
-                    <div className={wizardDotClass(index)}>;
-                        <div className="wizard__connector"></div>
-                        <div className="wizard__bullet">
+                    <div className='wizard__dot'>
+                        <div className={wizardConnectClass(index)}></div>
+                        <div className={wizardBulletClass(index)}>
                             <span className="wizard__bullet--number">{index + 1}</span>
                         </div>
-                        <div className="wizard__connector"></div>
+                        <div className={wizardConnectClass(index)}></div>
                     </div>
                 </div>
             ))}

@@ -30,14 +30,16 @@
     margin: .8rem;
     border: .2rem solid var(--dracula-orchid);
     border-radius: 50%;
+    background-color: var(--green-darner-tail);
     transition: .2s;
 }
 
 .wizard__connector {
     flex: 1;
     content: '';
-    height: .2rem;
+    height: .23rem;
     background-color: var(--dracula-orchid);
+    transition: .4s;
 }
 
 .wizard__step:first-child .wizard__connector:first-child,
@@ -45,6 +47,10 @@
     background-color: transparent;
 }
 
+.wizard--active {
+    background-color: var(--electron-blue);
+}
+
 .wizard--active > * {
-    background-color: #fff;
+    color: var(--city-lights)
 }
