@@ -22,7 +22,7 @@ const Signup = () => {
         <WizardProvider items={items}>
             <h1 className="signup--title">Crear cuenta</h1>
             <Wizard />
-            <div className="signup--shadow">
+            <div className="form--shadow">
                 <Routes>
                     <Route path="/" element={<Navigate to={routes.signup.personal} />} />
                     <Route path="personal" element={<PersonalSignup />} />

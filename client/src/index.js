@@ -5,6 +5,7 @@ import { $ } from './utils/dom';
 import 'normalize.css';
 import 'react-toastify/dist/ReactToastify.min.css';
 import './styles/index.css';
+import './styles/form.css';
 
 import App from './App';
 
