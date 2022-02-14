@@ -8,6 +8,7 @@ import { toast } from 'react-toastify';
 import useAuth from '@Auth/useAuth';
 import { login as service } from '@Services/userSession.service';
 
+import config from '@Utils/config';
 import routes from '@Helpers/routes';
 import resolver from '@Utils/resolvers/login.resolver';
 
@@ -25,11 +26,6 @@ const Login = () => {
     const { login } = useAuth();
     const [showPassword, setShowPassword] = useState(false);
 
-    const handleInvalidUser = (msg) => toast.error(msg, {
-        position: toast.POSITION.BOTTOM_RIGHT,
-        className: 'toast'
-    });
-
     const handleShowPassword = (e) => {
         e.preventDefault();
         setShowPassword(!showPassword);
@@ -44,7 +40,7 @@ const Login = () => {
             );
             reset();
         } catch (error) {
-            handleInvalidUser(error.message);
+            toast.error(error.message, config.toast);
         }
     }
 
@@ -52,7 +48,7 @@ const Login = () => {
 
     useEffect(() => {
         Object.values(errors)
-            .forEach(({ message }) => handleInvalidUser(message))
+            .forEach(({ message }) => toast.warning(message, config.toast))
     }, [errors])
 
     return (
@@ -62,36 +58,36 @@ const Login = () => {
         </Helmet>
 
         <div className="login">
-            <div className="login--shadow">
-                <form className="login--content" onSubmit={handleSubmit(handleLogin)}>
-                    <label className="login--content__content">
-                        <span className="login--content__brand">
+            <div className="form--shadow">
+                <form className="form" onSubmit={handleSubmit(handleLogin)}>
+                    <label className="form__content">
+                        <span className="form__brand">
                             Correo electrónico
                         </span>
-                        <div className="login--content__field">
+                        <div className="form__field">
                             <FaUser />
                             <input
                                 type="email"
                                 id="email"
-                                className="login--content__field--input"
+                                className="form__field--input"
                                 {...register('email')}
                             />
                         </div>
                     </label>
-                    <label className="login--content__content">
-                        <span className="login--content__brand">
+                    <label className="form__content">
+                        <span className="form__brand">
                             Contraseña
                         </span>
-                        <div className="login--content__field">
+                        <div className="form__field">
                             <FaUserLock />
                             <input
                                 type={showPassword ? 'text' : 'password'}
                                 id="password"
-                                className="login--content__field--input"
+                                className="form__field--input"
                                 {...register('password')}
                             />
                             <button
-                                className="login--content__field--btn"
+                                className="form__field--btn"
                                 onClick={handleShowPassword}
                             >
                                 {showPassword ? <FaEye /> : <FaEyeSlash />}
@@ -101,7 +97,7 @@ const Login = () => {
                     <input
                         type="submit"
                         id="submit"
-                        className="login--content__submit"
+                        className="form__btn form__btn--primary"
                         value="Iniciar sesión"
                     />
                 </form>
