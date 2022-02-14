@@ -19,6 +19,7 @@ const resolve = {
         '@Helpers': path.resolve(__dirname, 'src', 'helpers'),
         '@Pages': path.resolve(__dirname, 'src', 'pages'),
         '@Routers': path.resolve(__dirname, 'src', 'routers'),
+        '@Services': path.resolve(__dirname, 'src', 'services'),
         '@Utils': path.resolve(__dirname, 'src', 'utils')
     },
     extensions: ['.jsx', '...'],

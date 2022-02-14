@@ -9,6 +9,7 @@
             "@Helpers/*": ["src/helpers/*"],
             "@Pages/*": ["src/pages/*"],
             "@Routers/*": ["src/routers/*"],
+            "@Services/*": ["src/services/*"],
             "@Utils/*": ["src/utils/*"]
         }
     },
