@@ -1,9 +1,12 @@
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const DirectoryNamedWebpackPlugin = require('directory-named-webpack-plugin');
 const DotenvWebpackPlugin = require('dotenv-webpack');
+const esbuild = require('esbuild');
+const { ESBuildMinifyPlugin } = require('esbuild-loader');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
+const { ProvidePlugin } = require('webpack');
 const TerserPlugin = require('terser-webpack-plugin');
 
 const isProduction = mode => mode === 'production';
@@ -26,18 +29,11 @@ const rulesBabel = mode => ({
     test: /\.jsx?$/i,
     exclude: /node_modules/,
     use: {
-        loader: 'babel-loader',
+        loader: 'esbuild-loader',
         options: {
-            presets: [
-                ['@babel/preset-env', {
-                    useBuiltIns: 'usage',
-                    corejs: 3.20
-                }],
-                ['@babel/preset-react', {
-                    runtime: 'automatic',
-                    development: isDevelopment(mode)
-                }]
-            ]
+            loader: 'jsx',
+            target: 'es2021',
+            implementation: esbuild
         }
     }
 })
@@ -79,7 +75,8 @@ const plugins = mode => ([
     isProduction(mode) && new MiniCssExtractPlugin({
         filename: 'static/css/[name].[contenthash:8].css',
         chunkFilename: 'static/css/[name].[contenthash:8].chunk.css'
-    })
+    }),
+    new ProvidePlugin({ React: 'react' })
 ].filter(Boolean))
 
 const devtool = mode => (
@@ -96,7 +93,11 @@ const output = {
 
 const optimization = {
     minimize: true,
-    minimizer: [ new TerserPlugin(), new CssMinimizerPlugin() ],
+    minimizer: [
+        new TerserPlugin(),
+        new CssMinimizerPlugin(),
+        new ESBuildMinifyPlugin({ target: 'es2021' })
+    ],
     splitChunks: { chunks: 'all' },
     nodeEnv: 'production'
 }
