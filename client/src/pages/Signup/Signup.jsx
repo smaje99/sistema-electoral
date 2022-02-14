@@ -8,6 +8,8 @@ import PersonalSignup from './components/PersonalSignup';
 
 import routes from '@Helpers/routes';
 
+import './style.css';
+
 const items = [ 'Personal', 'Institucional' ];
 
 const Signup = () => {
@@ -18,13 +20,15 @@ const Signup = () => {
         </Helmet>
 
         <WizardProvider items={items}>
-            <h1>Crear cuenta</h1>
+            <h1 className="signup--title">Crear cuenta</h1>
             <Wizard />
-            <Routes>
-                <Route path="/" element={<Navigate to={routes.signup.personal} />} />
-                <Route path="personal" element={<PersonalSignup />} />
-                <Route path="institute" element={<InstituteSignup />} />
-            </Routes>
+            <div className="signup--shadow">
+                <Routes>
+                    <Route path="/" element={<Navigate to={routes.signup.personal} />} />
+                    <Route path="personal" element={<PersonalSignup />} />
+                    <Route path="institute" element={<InstituteSignup />} />
+                </Routes>
+            </div>
         </WizardProvider>
         </>
     )
