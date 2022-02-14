@@ -8,7 +8,7 @@ import Dashboard from '@Pages/Dashboard';
 import Home from '@Pages/Home';
 import Info from '@Pages/Info';
 import Login from '@Pages/Login';
-import Logout from '@Pages/Logout';
+import Signup from '@Pages/Signup';
 import NotFound from '@Pages/NotFound';
 import Welcome from '@Pages/Welcome';
 
@@ -18,7 +18,7 @@ const AppRouter = () => (
             <Route element={<PublicLayout />}>
                 <Route index element={<Home />} />
                 <Route path="login" element={<Login />} />
-                <Route path="signup" element={<Logout />} />
+                <Route path="signup/*" element={<Signup />} />
             </Route>
 
             <Route element={<PrivateRoutes />}>
