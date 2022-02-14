@@ -1,16 +1,22 @@
-import { useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
+import { useForm } from 'react-hook-form';
 import { FaEye, FaEyeSlash, FaUser, FaUserLock } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 
 import routes from '@Helpers/routes';
+import resolver from '@Utils/resolvers/login.resolver';
 
 import './style.css';
 
 const Login = () => {
-    const emailRef = useRef();
-    const passwordRef = useRef();
+    const {
+        reset,
+        register,
+        handleSubmit,
+        formState: { errors }
+    } = useForm({ resolver });
 
     const navigate = useNavigate();
 
@@ -31,6 +37,8 @@ const Login = () => {
         navigate(routes.dashboard());
     }
 
+    useEffect(reset, []);
+
     return (
         <>
         <Helmet>
@@ -39,7 +47,7 @@ const Login = () => {
 
         <div className="login">
             <div className="login--shadow">
-                <form className="login--content" onSubmit={handleLogin}>
+                <form className="login--content" onSubmit={handleSubmit(handleLogin)}>
                     <label className="login--content__content">
                         <span className="login--content__brand">
                             Correo electrónico
@@ -50,7 +58,7 @@ const Login = () => {
                                 type="email"
                                 id="email"
                                 className="login--content__field--input"
-                                ref={emailRef}
+                                {...register('email')}
                             />
                         </div>
                     </label>
@@ -64,7 +72,7 @@ const Login = () => {
                                 type={showPassword ? 'text' : 'password'}
                                 id="password"
                                 className="login--content__field--input"
-                                ref={passwordRef}
+                                {...register('password')}
                             />
                             <button
                                 className="login--content__field--btn"
