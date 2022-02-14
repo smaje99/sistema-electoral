@@ -2,8 +2,11 @@ import { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { useForm } from 'react-hook-form';
 import { FaEye, FaEyeSlash, FaUser, FaUserLock } from 'react-icons/fa';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
+
+import useAuth from '@Auth/useAuth';
+import { login as service } from '@Services/userSession.service';
 
 import routes from '@Helpers/routes';
 import resolver from '@Utils/resolvers/login.resolver';
@@ -18,8 +21,8 @@ const Login = () => {
         formState: { errors }
     } = useForm({ resolver });
 
-    const navigate = useNavigate();
-
+    const location = useLocation();
+    const { login } = useAuth();
     const [showPassword, setShowPassword] = useState(false);
 
     const handleInvalidUser = (msg) => toast.error(msg, {
@@ -32,12 +35,25 @@ const Login = () => {
         setShowPassword(!showPassword);
     }
 
-    const handleLogin = (e) => {
-        e.preventDefault();
-        navigate(routes.dashboard());
+    const handleLogin = async (formData) => {
+        try {
+            const credentials = await service(formData);
+            login(
+                credentials,
+                location.state ? location.state.from : routes.dashboard()
+            );
+            reset();
+        } catch (error) {
+            handleInvalidUser(error.message);
+        }
     }
 
     useEffect(reset, []);
+
+    useEffect(() => {
+        if (errors.email) handleInvalidUser(errors.email.message);
+        if (errors.password) handleInvalidUser(errors.password.message);
+    }, [errors])
 
     return (
         <>
