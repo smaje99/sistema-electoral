@@ -1,16 +1,16 @@
 {
     "compilerOptions": {
-      "target": "es2021",
-      "allowSyntheticDefaultImports": false,
-      "baseUrl": "./",
-      "paths": {
-        "@Auth/*": ["src/auth/*"],
-        "@Components/*": ["src/components/*"],
-        "@Helpers/*": ["src/helpers/*"],
-        "@Pages/*": ["src/pages/*"],
-        "@Routers/*": ["src/routers/*"],
-        "@Utils/*": ["src/utils/*"]
-      }
+        "target": "es2021",
+        "allowSyntheticDefaultImports": false,
+        "baseUrl": "./",
+        "paths": {
+            "@Auth/*": ["src/auth/*"],
+            "@Components/*": ["src/components/*"],
+            "@Helpers/*": ["src/helpers/*"],
+            "@Pages/*": ["src/pages/*"],
+            "@Routers/*": ["src/routers/*"],
+            "@Utils/*": ["src/utils/*"]
+        }
     },
     "exclude": ["node_modules", "dist"]
-  }
+}
