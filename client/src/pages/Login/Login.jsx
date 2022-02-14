@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 import { useForm } from 'react-hook-form';
 import { FaEye, FaEyeSlash, FaUser, FaUserLock } from 'react-icons/fa';
 import { Link, useLocation } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 import useAuth from '@Auth/useAuth';
 import { login as service } from '@Services/userSession.service';
@@ -115,8 +115,6 @@ const Login = () => {
                 </Link>
             </section>
         </div>
-
-        <ToastContainer />
         </>
     )
 }
