@@ -51,8 +51,8 @@ const Login = () => {
     useEffect(reset, []);
 
     useEffect(() => {
-        if (errors.email) handleInvalidUser(errors.email.message);
-        if (errors.password) handleInvalidUser(errors.password.message);
+        Object.values(errors)
+            .forEach(({ message }) => handleInvalidUser(message))
     }, [errors])
 
     return (
