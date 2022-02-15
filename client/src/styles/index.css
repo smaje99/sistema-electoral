@@ -17,6 +17,19 @@ html {
     font-family: 'Roboto', sans-serif;
 }
 
+body::-webkit-scrollbar {
+    width: 1rem;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: var(--american-river);
+    border-radius: 1rem;
+}
+
+body::-webkit-scrollbar-track {
+    background-color: var(--city-lights);
+}
+
 .toast {
     font: 12pt Ubuntu;
     color: var(--dracula-orchid);
