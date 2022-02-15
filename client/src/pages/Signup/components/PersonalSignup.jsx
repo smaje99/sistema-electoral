@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import {
     FaEnvelope,
@@ -14,6 +14,7 @@ import { toast } from 'react-toastify';
 import { useWizard } from '@Components/Wizard';
 
 import config from '@Utils/config';
+import { personalResolver } from '@Utils/resolvers/signup.resolver';
 import routes from '@Helpers/routes';
 
 const PersonalSignup = () => {
@@ -22,7 +23,7 @@ const PersonalSignup = () => {
         register,
         handleSubmit,
         formState: { errors }
-    } = useForm();
+    } = useForm({ resolver: personalResolver });
 
     const { next } = useWizard();
     const [showPassword, setShowPassword] = useState(false);
@@ -36,6 +37,11 @@ const PersonalSignup = () => {
         console.log(formData);
         next(routes.signup.institute);
     }
+
+    useEffect(() => {
+        Object.values(errors)
+            .forEach(({ message }) => toast.warning(message, config.toast))
+    }, [errors])
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} className="form">
@@ -114,7 +120,7 @@ const PersonalSignup = () => {
                         id="personal-gender-male"
                         className="form__field--input--radio"
                         value="1"
-                        {...register('gender')}
+                        {...register('gender', { setValueAs: v => parseInt(v) })}
                     />
                     <span className="form__brand">
                         Masculino
@@ -129,7 +135,7 @@ const PersonalSignup = () => {
                         id="personal-gender-female"
                         className="form__field--input--radio"
                         value="0"
-                        {...register('gender')}
+                        {...register('gender', { setValueAs: v => parseInt(v) })}
                     />
                     <span className="form__brand">
                         Femenino
