@@ -13,7 +13,7 @@ import { useNavigate } from 'react-router-dom';
 import { useWizard } from '@Components/Wizard';
 
 import config from '@Utils/config';
-import { personalResolver } from '@Utils/resolvers/signup.resolver';
+import { instituteResolver } from '@Utils/resolvers/signup.resolver';
 import routes from '@Helpers/routes';
 
 const InstituteSignup = () => {
@@ -22,7 +22,7 @@ const InstituteSignup = () => {
         register,
         handleSubmit,
         formState: { errors }
-    } = useForm();
+    } = useForm({ resolver: instituteResolver });
 
 	const navigate = useNavigate();
 	const { back } = useWizard();
