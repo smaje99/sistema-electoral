@@ -22,7 +22,7 @@ class UserSessionService {
                 isActive: data.isActive,
                 personalData: new PersonalData({
                     idPersonalData: data.idPersonalData,
-                    name: data.namePersonalData
+                    name: data.name
                 }),
                 institute: new Institute({
                     idInstitute: data.idInstitute,

@@ -23,7 +23,7 @@ const Item = ({ name, route }) => (
 const PrivateNavigation = () => {
     const {
         logout,
-        user: { name, role, permissions }
+        user: { personalData: { name }, role }
     } = useAuth();
 
     return (
@@ -31,16 +31,16 @@ const PrivateNavigation = () => {
             <section className="profile">
                 <span className="profile--welcome">Bienvenido</span>
                 <span className="profile--name">{name}</span>
-                <span className="profile--role">{role}</span>
+                <span className="profile--role">{role.name}</span>
             </section>
 
             <section className="navigation__menu">
-                <ul className="navigation__menu--list">
+                {/* <ul className="navigation__menu--list">
                     <Item {...items.info} />
                     {permissions.map(permission => (
                         <Item {...items[permission]} key={permission} />
                     ))}
-                </ul>
+                </ul> */}
             </section>
 
             <section className="navigation__logout">

@@ -3,7 +3,7 @@ class PersonalData {
         this.idPersonalData = idPersonalData;
         this.dni = dni;
         this.name = name;
-        this.gender = !!gender;
+        this.gender = gender ? !!gender : undefined;
         this.phone = phone;
     }
 }
