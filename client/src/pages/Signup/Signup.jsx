@@ -19,17 +19,19 @@ const Signup = () => {
             <title>Crear cuenta</title>
         </Helmet>
 
-        <WizardProvider items={items}>
-            <h1 className="signup--title">Crear cuenta</h1>
-            <Wizard />
-            <div className="form--shadow">
-                <Routes>
-                    <Route path="/" element={<Navigate to={routes.signup.personal} />} />
-                    <Route path="personal" element={<PersonalSignup />} />
-                    <Route path="institute" element={<InstituteSignup />} />
-                </Routes>
-            </div>
-        </WizardProvider>
+        <div className="signup">
+            <WizardProvider items={items}>
+                <h1 className="signup--title">Crear cuenta</h1>
+                <Wizard />
+                <div className="form--shadow signup__register">
+                    <Routes>
+                        <Route path="/" element={<Navigate to={routes.signup.personal} />} />
+                        <Route path="personal" element={<PersonalSignup />} />
+                        <Route path="institute" element={<InstituteSignup />} />
+                    </Routes>
+                </div>
+            </WizardProvider>
+        </div>
         </>
     )
 }
