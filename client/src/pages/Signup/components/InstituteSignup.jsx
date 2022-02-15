@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import {
-	FaAddressBook,
+	FaCity,
     FaEnvelope,
 	FaGraduationCap,
     FaIdCard,
@@ -89,7 +89,7 @@ const InstituteSignup = () => {
                     Dirección
                 </span>
                 <div className="form__field">
-                    <FaAddressBook />
+                    <FaCity />
                     <input
                         type="text"
                         id="institute-address"
