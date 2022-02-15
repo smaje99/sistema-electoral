@@ -1,84 +1,18 @@
-.login,
-.login--content,
-.login--content__content {
-    display: flex;
-    flex-direction: column;
-}
-
 .login {
     flex: 1;
+    display: flex;
+    flex-direction: column;
     gap: 3.2rem;
     justify-content: center;
     align-items: center;
     background-color: var(--city-lights);
 }
 
-.login--shadow {
-    position: relative;
-    padding: 1.6rem;
-    border-radius: 2.3rem;
-    background-color: var(--soothing-breeze);
-    box-shadow: var(--shadow-component);
-}
-
-.login--content {
-    gap: 2rem;
-    padding: 5rem;
-    border-radius: 2.3rem;
-    background-color: var(--city-lights);
-    box-shadow: var(--shadow-component);
-}
-
-.login--content__content {
-    gap: .8rem;
-}
-
-.login--content__content > * {
-    font-size: 12pt;
-}
-
-.login--content__brand {
-    color: var(--dracula-orchid);
-}
-
-.login--content__field {
-    flex: 1;
+.login__account {
     display: flex;
-    gap: 1.2rem;
+    flex-direction: column;
+    gap: .8rem;
     align-items: center;
-    padding: .8rem 1.6rem;
-    border-radius: 2rem;
-    background-color: var(--green-darner-tail);
-}
-
-.login--content__field--input {
-    flex: 1;
-    display: inline-block;
-    border-color: transparent;
-    outline: 0;
-    color: var(--dracula-orchid);
-    background-color: transparent;
-    caret-color: var(--dracula-orchid);
-}
-
-.login--content__field--input:-webkit-autofill,
-.login--content__field--input:-webkit-autofill:hover,
-.login--content__field--input:-webkit-autofill:focus {
-    transition: all 0s 50000s;
-}
-
-.login--content__field--btn {
-    border-color: transparent;
-    background-color: transparent;
-}
-
-.login--content__submit {
-    padding: .8rem;
-    border-radius: 2rem;
-    font-size: 12pt;
-    color: var(--city-lights);
-    background-color: var(--dracula-orchid);
-    cursor: pointer;
 }
 
 .login__account--brand,
@@ -90,11 +24,4 @@
 .login__account--link {
     text-decoration: none;
     color: var(--electron-blue);
-}
-
-.login__account {
-    display: flex;
-    flex-direction: column;
-    gap: .8rem;
-    align-items: center;
 }
