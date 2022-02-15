@@ -3,7 +3,10 @@
     justify-content: space-between;
     align-items: center;
     padding: 1.2rem 3.6rem;
-    background-color: var(--electron-blue)
+    background-color: var(--electron-blue);
+    position: sticky;
+    z-index: 1;
+    top: 0;
 }
 
 .navbar > * {
