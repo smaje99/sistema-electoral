@@ -1,13 +1,15 @@
-CREATE PROCEDURE election.spUserSession_Login(
-	_email varchar(50),
-    _password varchar(50)
-)
-BEGIN
-	SET @isAuth := (SELECT election.fnCheckCredentials(_email, _password));
+use election;
 
-	IF @isAuth = 1 THEN
-		CALL spUser_Get(_email);
-	ELSE
-		SELECT @isAuth as isAuth;
-	END IF;
-END
+create procedure spUserSession_Login(
+	_email varchar(50),
+	_password varchar(50)
+)
+begin
+	set @isAuth := (select fnCheckCrendentials(_email, _password));
+
+	if @isAuth = 1 then
+		call spUser_Get(_email);
+	else
+		select @isAuth as isAuth;
+	end if;
+end;
