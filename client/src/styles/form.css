@@ -16,22 +16,47 @@
     box-shadow: var(--shadow-component);
 }
 
-.form__content > * {
+.form__content > *,
+.form__brand--legend,
+.form__brand {
     font-size: 12pt;
+}
+
+.form__content--set,
+.form__field {
+    flex: 1;
+    gap: 1.2rem;
+    padding: .8rem 1.6rem;
+    border-radius: 2rem;
+}
+
+.form__content--set,
+.form__field--container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .form__brand {
     color: var(--dracula-orchid);
 }
 
+.form__brand--legend {
+    padding: 0 .8rem;
+}
+
 .form__field {
-    flex: 1;
     display: flex;
-    gap: 1.2rem;
     align-items: center;
-    padding: .8rem 1.6rem;
-    border-radius: 2rem;
     background-color: var(--green-darner-tail);
+}
+
+.form__field--container {
+    gap: .4rem;
+}
+
+.form__field--container > * {
+    cursor: pointer;
 }
 
 .form__field--input {
