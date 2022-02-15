@@ -1,12 +1,12 @@
-CREATE TABLE `user` (
-  `IdUser` int PRIMARY KEY NOT NULL AUTO_INCREMENT UNIQUE,
-  `Email` varchar(50) NOT NULL UNIQUE,
-  `Password` varchar(50) NOT NULL,
-  `Active` tinyint(1) NOT NULL DEFAULT '1',
-  `PersonalData` int NOT NULL,
-  `Institute` int NOT NULL,
-  `Role` int NOT NULL,
-  FOREIGN KEY (`PersonalData`) REFERENCES `personaldata` (`idPersonalData`),
-  FOREIGN KEY (`Institute`) REFERENCES `institute` (`idInstitute`),
-  FOREIGN KEY (`Role`) REFERENCES `role` (`idRole`)
-)
+create table if not exists election.`user` (
+	`idUser` int unsigned PRIMARY KEY NOT NULL AUTO_INCREMENT UNIQUE,
+ 	`email` varchar(50) NOT NULL UNIQUE,
+ 	`password` varchar(50) NOT NULL,
+ 	`isActive` bool NOT NULL DEFAULT true,
+ 	`personalData` int unsigned NOT NULL,
+ 	`institute` int unsigned NOT NULL,
+ 	`role` int unsigned NOT NULL,
+ 	FOREIGN KEY (`personalData`) REFERENCES `personaldata` (`idPersonalData`),
+ 	FOREIGN KEY (`institute`) REFERENCES `institute` (`idInstitute`),
+ 	FOREIGN KEY (`role`) REFERENCES `role` (`idRole`)
+);
