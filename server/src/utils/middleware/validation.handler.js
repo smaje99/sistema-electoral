@@ -16,7 +16,7 @@ const validate = async (data, schema) => {
 
 /**
  * It takes a schema and a check, and returns a middleware function that validates
- * the request body against the schema
+ * the request data against the schema
  * @param schema - The schema to validate the request against.
  * @param [check=body] - The part of the request to validate. Defaults to 'body'.
  */
