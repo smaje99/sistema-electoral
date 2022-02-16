@@ -19,12 +19,24 @@ async function connectionManager(callback) {
     }
 }
 
-async function query(queryString) {
-    return connectionManager(conn => conn.query(queryString));
+/**
+ * It executes a SQL query against the database and returns the results.
+ * @param sql - The SQL query to execute.
+ * @param [values] - An array of values to be bound to the query.
+ * @returns A promise.
+ */
+async function query(sql, values = None) {
+    return connectionManager(conn => conn.query(sql, values));
 }
 
-async function execute(executeString) {
-    return connectionManager(conn => conn.execute(executeString));
+/**
+ * It executes a SQL query against the database and returns the results.
+ * @param sql - The SQL query to execute.
+ * @param [values] - An array of values to be passed to the query.
+ * @returns A promise.
+ */
+async function execute(sql, values = None) {
+    return connectionManager(conn => conn.execute(sql, values));
 }
 
 module.exports = { query, execute }
