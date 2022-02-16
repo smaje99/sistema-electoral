@@ -14,20 +14,25 @@ create procedure spAdmin_Insert(
     _phoneInstitute varchar(15)
 )
 begin
+    -- insert into to institute
     insert
         into institute(nit, `name`, `address`, email, phone)
         values (_nit, _nameInstitute, _address, _emailInstitute, _phoneInstitute);
 
+    set @idInstitute := LAST_INSERT_ID();
+
+    -- insert into to personal data
     insert
         into personaldata(dni, `name`, gender, phone)
         values (_dni, _nameUser, _gender, _phoneUser);
 
-    set @idInstitute := (select idInstitute from institute where nit = _nit);
-    set @idPersonalData := (
-        select idPersonalData from personaldata where dni = _dni
-    );
+    set @idPersonalData := LAST_INSERT_ID();
 
+    -- insert into to user
     insert
         into `user`(email, `password`, personaldata, institute, `role`)
         values (_emailUser, `_password`, @idPersonalData, @idInstitute, 1);
+
+    -- returns the user's session information
+    call spUserSession_Login(_email, `_password`);
 end;
