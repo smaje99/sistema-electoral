@@ -2,7 +2,7 @@ const API = process.env.API;
 
 const getURLAdmin = `${API}/admin`;
 
-export const createAccount = async ({ user, institute }) => {
+export const createAccount = async (user, institute) => {
     const accountData = {
         emailUser: user.email,
         password: user.password,
