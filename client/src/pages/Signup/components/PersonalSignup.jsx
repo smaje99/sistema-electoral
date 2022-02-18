@@ -17,7 +17,7 @@ import config from '@Utils/config';
 import { personalResolver } from '@Utils/resolvers/signup.resolver';
 import routes from '@Helpers/routes';
 
-const PersonalSignup = () => {
+const PersonalSignup = ({ data, handleData }) => {
     const {
         reset,
         register,
@@ -34,7 +34,7 @@ const PersonalSignup = () => {
     }
 
     const onSubmit = (formData) => {
-        console.log(formData);
+        handleData({ ...formData, reset });
         next(routes.signup.institute);
     }
 
@@ -55,6 +55,7 @@ const PersonalSignup = () => {
                         type="text"
                         id="personal-dni"
                         className="form__field--input"
+                        value={data?.dni}
                         {...register('dni')}
                     />
                 </div>
@@ -69,6 +70,7 @@ const PersonalSignup = () => {
                         type="text"
                         id="personal-name"
                         className="form__field--input"
+                        value={data?.name}
                         {...register('name')}
                     />
                 </div>
@@ -83,6 +85,7 @@ const PersonalSignup = () => {
                         type="email"
                         id="personal-email"
                         className="form__field--input"
+                        value={data?.email}
                         {...register('email')}
                     />
                 </div>
@@ -97,6 +100,7 @@ const PersonalSignup = () => {
                         type="password"
                         id="personal-password"
                         className="form__field--input"
+                        value={data?.password}
                         {...register('password')}
                     />
                     <button
@@ -120,6 +124,7 @@ const PersonalSignup = () => {
                         id="personal-gender-male"
                         className="form__field--input--radio"
                         value="1"
+                        selected={data?.gender === 1}
                         {...register('gender', { setValueAs: v => parseInt(v) })}
                     />
                     <span className="form__brand">
@@ -135,6 +140,7 @@ const PersonalSignup = () => {
                         id="personal-gender-female"
                         className="form__field--input--radio"
                         value="0"
+                        selected={data?.gender === 0}
                         {...register('gender', { setValueAs: v => parseInt(v) })}
                     />
                     <span className="form__brand">
@@ -152,6 +158,7 @@ const PersonalSignup = () => {
                         type="tel"
                         id="personal-phone"
                         className="form__field--input"
+                        value={data?.phone}
                         {...register('phone')}
                     />
                 </div>

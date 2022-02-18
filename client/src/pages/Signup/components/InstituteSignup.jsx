@@ -8,7 +8,6 @@ import {
     FaPhoneAlt
 } from 'react-icons/fa';
 import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
 
 import { useWizard } from '@Components/Wizard';
 
@@ -16,23 +15,25 @@ import config from '@Utils/config';
 import { instituteResolver } from '@Utils/resolvers/signup.resolver';
 import routes from '@Helpers/routes';
 
-const InstituteSignup = () => {
+const InstituteSignup = ({ data, handleData, onSubmitToService }) => {
 	const {
         reset,
         register,
         handleSubmit,
+        getValues,
         formState: { errors }
     } = useForm({ resolver: instituteResolver });
 
-	const navigate = useNavigate();
 	const { back } = useWizard();
 
-	const handleToBack = () => back(routes.signup.personal);
+	const handleToBack = () => {
+        handleData(getValues());
+        back(routes.signup.personal);
+    }
 
 	const onSubmit = (formData) => {
-        console.log(formData);
-        navigate(routes.home);
-		toast.success('Cuenta personal e institucional creadas', config.toast);
+        handleData({ ...formData, reset });
+        onSubmitToService();
     }
 
 	useEffect(() => {
