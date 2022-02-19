@@ -8,6 +8,7 @@
             "@Components/*": ["src/components/*"],
             "@Helpers/*": ["src/helpers/*"],
             "@Pages/*": ["src/pages/*"],
+            "@Resolvers/*": ["src/resolvers/*"],
             "@Routers/*": ["src/routers/*"],
             "@Services/*": ["src/services/*"],
             "@Utils/*": ["src/utils/*"]

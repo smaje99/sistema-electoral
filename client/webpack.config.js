@@ -18,6 +18,7 @@ const resolve = {
         '@Components': path.resolve(__dirname, 'src', 'components'),
         '@Helpers': path.resolve(__dirname, 'src', 'helpers'),
         '@Pages': path.resolve(__dirname, 'src', 'pages'),
+        '@Resolvers' : path.resolve(__dirname, 'src', 'resolvers'),
         '@Routers': path.resolve(__dirname, 'src', 'routers'),
         '@Services': path.resolve(__dirname, 'src', 'services'),
         '@Utils': path.resolve(__dirname, 'src', 'utils')
