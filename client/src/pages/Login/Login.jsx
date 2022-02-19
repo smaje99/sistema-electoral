@@ -10,7 +10,7 @@ import { login as service } from '@Services/userSession.service';
 
 import config from '@Utils/config';
 import routes from '@Helpers/routes';
-import resolver from '@Utils/resolvers/login.resolver';
+import resolver from '@Resolvers/login.resolver';
 
 import './style.css';
 

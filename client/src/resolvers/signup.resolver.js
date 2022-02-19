@@ -5,7 +5,7 @@ const dni = yup.string();
 const name = yup.string();
 const email = yup.string().email('No es un correo electrónico');
 const password = yup.string();
-const gender = yup.mixed().oneOf([0, 1], 'Debe seleccionar algún genero');
+const gender = yup.number().oneOf([0, 1], 'Debe seleccionar algún genero');
 const phone = yup.string();
 const address = yup.string();
 

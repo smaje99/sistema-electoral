@@ -12,7 +12,7 @@ import { toast } from 'react-toastify';
 import { useWizard } from '@Components/Wizard';
 
 import config from '@Utils/config';
-import { instituteResolver } from '@Utils/resolvers/signup.resolver';
+import { instituteResolver } from '@Resolvers/signup.resolver';
 import routes from '@Helpers/routes';
 
 const InstituteSignup = ({ data, handleData, onSubmitToService }) => {
