@@ -33,6 +33,10 @@ const PersonalSignup = ({ data, handleData }) => {
         setShowPassword(!showPassword);
     }
 
+    const checkedGender = (value) => (
+        data?.gender === value ? { checked: true } : {}
+    )
+
     const onSubmit = (formData) => {
         handleData({ ...formData, reset });
         next(routes.signup.institute);
@@ -124,7 +128,7 @@ const PersonalSignup = ({ data, handleData }) => {
                         id="personal-gender-male"
                         className="form__field--input--radio"
                         value="1"
-                        selected={data?.gender === 1}
+                        {...checkedGender(1)}
                         {...register('gender', { setValueAs: v => parseInt(v) })}
                     />
                     <span className="form__brand">
@@ -140,7 +144,7 @@ const PersonalSignup = ({ data, handleData }) => {
                         id="personal-gender-female"
                         className="form__field--input--radio"
                         value="0"
-                        selected={data?.gender === 0}
+                        {...checkedGender(0)}
                         {...register('gender', { setValueAs: v => parseInt(v) })}
                     />
                     <span className="form__brand">
