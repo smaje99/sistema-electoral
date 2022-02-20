@@ -15,7 +15,7 @@ export const login = async ({ email, password }) => {
         })
         const data = await res.json();
 
-        if (data.error) throw new Error(data.error);
+        if (data.error) throw new data.message;
         if (!data.isActive) throw new Error('Usuario no activo');
 
         return data;

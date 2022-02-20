@@ -23,8 +23,10 @@ export const createAccount = async (user, institute) => {
             body: JSON.stringify(accountData),
             headers: { 'Content-type': 'application/json' }
         })
-
         const sessionData = await res.json();
+
+        if (sessionData.error) throw sessionData.message;
+
         return sessionData;
     } catch (error) {
         throw new Error(error);
