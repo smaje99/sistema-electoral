@@ -30,7 +30,7 @@ const PersonalSignup = ({ data, handleData }) => {
 
     const handleShowPassword = (e) => {
         e.preventDefault();
-        setShowPassword(!showPassword);
+        setShowPassword(currShow => !currShow);
     }
 
     const checkedGender = (value) => (
@@ -101,7 +101,7 @@ const PersonalSignup = ({ data, handleData }) => {
                 <div className="form__field">
                     <FaUserLock />
                     <input
-                        type="password"
+                        type={showPassword ? 'text' : 'password'}
                         id="personal-password"
                         className="form__field--input"
                         value={data?.password}
