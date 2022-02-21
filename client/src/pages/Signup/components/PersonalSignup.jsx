@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { forwardRef, useState } from 'react';
+import { useFormContext } from 'react-hook-form';
 import {
     FaEnvelope,
     FaEye,
@@ -9,22 +9,11 @@ import {
     FaUser,
     FaUserLock
 } from 'react-icons/fa';
-import { toast } from 'react-toastify';
 
 import { useWizard } from '@Components/Wizard';
 
-import config from '@Utils/config';
-import { personalResolver } from '@Resolvers/signup.resolver';
-import routes from '@Helpers/routes';
-
-const PersonalSignup = ({ data, handleData }) => {
-    const {
-        reset,
-        register,
-        handleSubmit,
-        formState: { errors }
-    } = useForm({ resolver: personalResolver });
-
+const PersonalSignup = forwardRef((props, ref) => {
+    const { register } = useFormContext();
     const { next } = useWizard();
     const [showPassword, setShowPassword] = useState(false);
 
@@ -33,22 +22,8 @@ const PersonalSignup = ({ data, handleData }) => {
         setShowPassword(currShow => !currShow);
     }
 
-    const checkedGender = (value) => (
-        data?.gender === value ? { checked: true } : {}
-    )
-
-    const onSubmit = (formData) => {
-        handleData({ ...formData, reset });
-        next(routes.signup.institute);
-    }
-
-    useEffect(() => {
-        Object.values(errors)
-            .forEach(({ message }) => toast.warning(message, config.toast))
-    }, [errors])
-
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className="form">
+        <section ref={ref} className="form">
             <label htmlFor="personal-dni" className="form__content">
                 <span className="form__brand">
                     DNI
@@ -59,8 +34,7 @@ const PersonalSignup = ({ data, handleData }) => {
                         type="text"
                         id="personal-dni"
                         className="form__field--input"
-                        value={data?.dni}
-                        {...register('dni')}
+                        {...register('personal.dni')}
                     />
                 </div>
             </label>
@@ -74,8 +48,7 @@ const PersonalSignup = ({ data, handleData }) => {
                         type="text"
                         id="personal-name"
                         className="form__field--input"
-                        value={data?.name}
-                        {...register('name')}
+                        {...register('personal.name')}
                     />
                 </div>
             </label>
@@ -89,8 +62,7 @@ const PersonalSignup = ({ data, handleData }) => {
                         type="email"
                         id="personal-email"
                         className="form__field--input"
-                        value={data?.email}
-                        {...register('email')}
+                        {...register('personal.email')}
                     />
                 </div>
             </label>
@@ -104,8 +76,7 @@ const PersonalSignup = ({ data, handleData }) => {
                         type={showPassword ? 'text' : 'password'}
                         id="personal-password"
                         className="form__field--input"
-                        value={data?.password}
-                        {...register('password')}
+                        {...register('personal.password')}
                     />
                     <button
                         className="form__field--btn"
@@ -128,8 +99,7 @@ const PersonalSignup = ({ data, handleData }) => {
                         id="personal-gender-male"
                         className="form__field--input--radio"
                         value="1"
-                        {...checkedGender(1)}
-                        {...register('gender', { setValueAs: v => parseInt(v) })}
+                        {...register('personal.gender', { setValueAs: v => parseInt(v) })}
                     />
                     <span className="form__brand">
                         Masculino
@@ -144,8 +114,7 @@ const PersonalSignup = ({ data, handleData }) => {
                         id="personal-gender-female"
                         className="form__field--input--radio"
                         value="0"
-                        {...checkedGender(0)}
-                        {...register('gender', { setValueAs: v => parseInt(v) })}
+                        {...register('personal.gender', { setValueAs: v => parseInt(v) })}
                     />
                     <span className="form__brand">
                         Femenino
@@ -162,18 +131,18 @@ const PersonalSignup = ({ data, handleData }) => {
                         type="tel"
                         id="personal-phone"
                         className="form__field--input"
-                        value={data?.phone}
-                        {...register('phone')}
+                        {...register('personal.phone')}
                     />
                 </div>
             </label>
-            <input
-                type="submit"
+            <button
                 className="form__btn form__btn--primary"
-                value="Siguiente"
-            />
-        </form>
+                onClick={next}
+            >
+                Siguiente
+            </button>
+        </section>
     )
-}
+})
 
 export default PersonalSignup;

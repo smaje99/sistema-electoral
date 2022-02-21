@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
-import { useForm } from 'react-hook-form';
+import { forwardRef } from 'react';
+import { useFormContext } from 'react-hook-form';
 import {
 	FaCity,
     FaEnvelope,
@@ -7,42 +7,15 @@ import {
     FaIdCard,
     FaPhoneAlt
 } from 'react-icons/fa';
-import { toast } from 'react-toastify';
 
 import { useWizard } from '@Components/Wizard';
 
-import config from '@Utils/config';
-import { instituteResolver } from '@Resolvers/signup.resolver';
-import routes from '@Helpers/routes';
-
-const InstituteSignup = ({ data, handleData, onSubmitToService }) => {
-	const {
-        reset,
-        register,
-        handleSubmit,
-        getValues,
-        formState: { errors }
-    } = useForm({ resolver: instituteResolver });
-
+const InstituteSignup = forwardRef((props, ref) => {
+	const { register } = useFormContext();
 	const { back } = useWizard();
 
-	const handleToBack = () => {
-        handleData(getValues());
-        back(routes.signup.personal);
-    }
-
-	const onSubmit = (formData) => {
-        handleData({ ...formData, reset });
-        onSubmitToService();
-    }
-
-	useEffect(() => {
-        Object.values(errors)
-            .forEach(({ message }) => toast.warning(message, config.toast))
-    }, [errors])
-
 	return (
-		<form className="form" onSubmit={handleSubmit(onSubmit)}>
+		<section ref={ref} className="form hidden">
 			<label htmlFor="institute-name" className="form__content">
                 <span className="form__brand">
                     Nombre de la institución
@@ -53,7 +26,7 @@ const InstituteSignup = ({ data, handleData, onSubmitToService }) => {
                         type="text"
                         id="institute-name"
                         className="form__field--input"
-                        {...register('name')}
+                        {...register('institute.name')}
                     />
                 </div>
             </label>
@@ -67,7 +40,7 @@ const InstituteSignup = ({ data, handleData, onSubmitToService }) => {
                         type="text"
                         id="institute-nit"
                         className="form__field--input"
-                        {...register('nit')}
+                        {...register('institute.nit')}
                     />
                 </div>
             </label>
@@ -81,7 +54,7 @@ const InstituteSignup = ({ data, handleData, onSubmitToService }) => {
                         type="email"
                         id="institute-email"
                         className="form__field--input"
-                        {...register('email')}
+                        {...register('institute.email')}
                     />
                 </div>
             </label>
@@ -95,7 +68,7 @@ const InstituteSignup = ({ data, handleData, onSubmitToService }) => {
                         type="text"
                         id="institute-address"
                         className="form__field--input"
-                        {...register('address')}
+                        {...register('institute.address')}
                     />
                 </div>
             </label>
@@ -109,7 +82,7 @@ const InstituteSignup = ({ data, handleData, onSubmitToService }) => {
                         type="tel"
                         id="institute-phone"
                         className="form__field--input"
-                        {...register('phone')}
+                        {...register('institute.phone')}
                     />
                 </div>
             </label>
@@ -120,12 +93,12 @@ const InstituteSignup = ({ data, handleData, onSubmitToService }) => {
 			/>
             <button
 				className="form__btn form__btn--primary"
-				onClick={handleToBack}
+				onClick={back}
 			>
 				Anterior
 			</button>
-        </form>
+        </section>
 	)
-}
+})
 
 export default InstituteSignup;

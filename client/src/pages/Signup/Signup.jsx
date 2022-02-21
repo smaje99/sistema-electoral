@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet';
-import { Navigate, Routes, Route } from 'react-router-dom';
+import { useForm, FormProvider } from 'react-hook-form';
 import { toast } from 'react-toastify';
 
 import { Wizard, WizardProvider } from '@Components/Wizard';
@@ -10,6 +10,7 @@ import PersonalSignup from './components/PersonalSignup';
 
 import useAuth from '@Auth/useAuth';
 import { createAccount as service } from '@Services/admin.service';
+import resolver from '@Resolvers/signup.resolver';
 
 import routes from '@Helpers/routes';
 import config from '@Utils/config';
@@ -20,68 +21,66 @@ const items = [ 'Personal', 'Institucional' ];
 
 const Signup = () => {
     const { login } = useAuth();
-    const [personalData, setPersonalData] = useState({});
-    const [instituteData, setInstituteData] = useState({});
+    const methods = useForm({ resolver });
+    const personalRef = useRef();
+    const instituteRef = useRef();
+    const elements = [ personalRef, instituteRef ];
 
-    const getResets = () => {
-        const resets = [ personalData.reset, institute.reset ];
-        delete personalData.reset;
-        delete instituteData.reset;
-        return resets;
+    const handleBack = (index) => {
+        elements[index - 1]?.current.classList.toggle('hidden');
+        elements[index].current.classList.toggle('hidden');
     }
 
-    const onSubmitToService = async () => {
-        const resets = getResets();
+    const handleNext = (index) => {
+        elements[index + 1]?.current.classList.toggle('hidden');
+        elements[index].current.classList.toggle('hidden');
+    }
+
+    const onSubmit = async (formData) => {
+        const { personal, institute } = formData;
 
         try {
-            console.log({ personalData, instituteData });
+            console.log({ personal, institute });
             // Send the registration data to the service and get the session data
-            const data = await service(personalData, instituteData);
+            const sessionData = await service(personal, institute);
+            console.log(sessionData);
             // Restore personal and institutional registration forms
-            resets.forEach(e => e());
+            methods.reset();
             // Log in
-            login(data, routes.dashboard());
+            login(sessionData, routes.dashboard());
             toast.success('Cuenta personal e institucional creadas', config.toast);
         } catch (error) {
             toast.error(error.message, config.toast);
         }
     }
 
+    useEffect(() => {
+        Object
+            .values(methods.formState.errors)
+            .forEach(({ message }) => toast.warning(message, config.toast))
+    }, [methods.formState.errors])
+
     return (
         <>
         <Helmet>
-            <title>Crear cuenta</title>
+            <title>Crear cuenta | Sistema Electoral</title>
         </Helmet>
 
-        <div className="signup">
-            <WizardProvider items={items}>
+        <main className="signup">
+            <WizardProvider {...{ items, handleBack, handleNext }}>
                 <h1 className="signup--title">Crear cuenta</h1>
                 <Wizard />
-                <div className="form--shadow signup__register">
-                    <Routes>
-                        <Route
-                            path="/"
-                            element={<Navigate to={routes.signup.personal} />}
-                        />
-                        <Route
-                            path="personal"
-                            element={<PersonalSignup
-                                data={personalData}
-                                handleData={setPersonalData}
-                            />}
-                        />
-                        <Route
-                            path="institute"
-                            element={<InstituteSignup
-                                data={instituteData}
-                                handleData={setInstituteData}
-                                onSubmitToService={onSubmitToService}
-                            />}
-                        />
-                    </Routes>
-                </div>
+                <FormProvider {...methods}>
+                    <form
+                        onSubmit={methods.handleSubmit(onSubmit)}
+                        className="form--shadow signup__register"
+                    >
+                        <PersonalSignup ref={personalRef} />
+                        <InstituteSignup ref={instituteRef} />
+                    </form>
+                </FormProvider>
             </WizardProvider>
-        </div>
+        </main>
         </>
     )
 }
