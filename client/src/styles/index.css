@@ -35,3 +35,7 @@ body::-webkit-scrollbar-track {
     color: var(--dracula-orchid);
     background-color: var(--soothing-breeze);
 }
+
+.hidden {
+    display: none !important;
+}
