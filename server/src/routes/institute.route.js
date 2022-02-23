@@ -2,10 +2,10 @@ const router = require('express').Router();
 
 const service = require('../services/institute.service');
 
-const { createSchema } = require('../utils/schemas/institute.schema');
+const { createAccountSchema } = require('../utils/schemas/institute.schema');
 const validation = require('../utils/middleware/validation.handler');
 
-router.put('/', validation(createSchema), async (req, res, next) => {
+router.put('/', validation(createAccountSchema), async (req, res, next) => {
     const data = req.body;
 
     try {
