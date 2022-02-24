@@ -6,7 +6,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 import useAuth from '@Auth/useAuth';
-import { login as service } from '@Services/userSession.service';
+import service from '@Services/user/session.service';
 
 import config from '@Utils/config';
 import routes from '@Helpers/routes';
@@ -33,7 +33,7 @@ const Login = () => {
 
     const handleLogin = async (formData) => {
         try {
-            const credentials = await service(formData);
+            const credentials = await service.login(formData);
             login(
                 credentials,
                 location.state ? location.state.from : routes.dashboard()
