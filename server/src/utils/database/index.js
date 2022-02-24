@@ -25,7 +25,7 @@ async function connectionManager(callback) {
  * @param [values] - An array of values to be bound to the query.
  * @returns A promise.
  */
-async function query(sql, values = None) {
+async function query(sql, values) {
     return connectionManager(conn => conn.query(sql, values));
 }
 
@@ -35,7 +35,7 @@ async function query(sql, values = None) {
  * @param [values] - An array of values to be passed to the query.
  * @returns A promise.
  */
-async function execute(sql, values = None) {
+async function execute(sql, values) {
     return connectionManager(conn => conn.execute(sql, values));
 }
 

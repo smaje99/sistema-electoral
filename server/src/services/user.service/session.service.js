@@ -10,9 +10,7 @@ const {
 class UserSessionService {
     async login(email, password) {
         try {
-            const [[[data]]] = await query(
-                `CALL spUserSession_Login("${email}", "${password}")`
-            )
+            const [[[data]]] = await query(`CALL spUserSession_Login(?, ?)`, [email, password]);
 
             if (data?.isAuth == 0)
                 throw new HTTPError("Credenciales Invalidas", 203);
