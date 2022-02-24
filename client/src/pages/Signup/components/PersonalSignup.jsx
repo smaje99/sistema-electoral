@@ -56,7 +56,7 @@ const PersonalSignup = forwardRef(({ institute }, ref) => {
                         type="text"
                         id="personal-dni"
                         className="form__field--input"
-                        {...register('personal.dni')}
+                        {...register('dni')}
                     />
                 </div>
             </label>
@@ -70,7 +70,7 @@ const PersonalSignup = forwardRef(({ institute }, ref) => {
                         type="text"
                         id="personal-name"
                         className="form__field--input"
-                        {...register('personal.name')}
+                        {...register('name')}
                     />
                 </div>
             </label>
@@ -84,7 +84,7 @@ const PersonalSignup = forwardRef(({ institute }, ref) => {
                         type="email"
                         id="personal-email"
                         className="form__field--input"
-                        {...register('personal.email')}
+                        {...register('email')}
                     />
                 </div>
             </label>
@@ -98,7 +98,7 @@ const PersonalSignup = forwardRef(({ institute }, ref) => {
                         type={showPassword ? 'text' : 'password'}
                         id="personal-password"
                         className="form__field--input"
-                        {...register('personal.password')}
+                        {...register('password')}
                     />
                     <button
                         className="form__field--btn"
@@ -121,7 +121,7 @@ const PersonalSignup = forwardRef(({ institute }, ref) => {
                         id="personal-gender-male"
                         className="form__field--input--radio"
                         value="1"
-                        {...register('personal.gender', { setValueAs: v => parseInt(v) })}
+                        {...register('gender', { setValueAs: v => parseInt(v) })}
                     />
                     <span className="form__brand">
                         Masculino
@@ -136,7 +136,7 @@ const PersonalSignup = forwardRef(({ institute }, ref) => {
                         id="personal-gender-female"
                         className="form__field--input--radio"
                         value="0"
-                        {...register('personal.gender', { setValueAs: v => parseInt(v) })}
+                        {...register('gender', { setValueAs: v => parseInt(v) })}
                     />
                     <span className="form__brand">
                         Femenino
@@ -153,7 +153,7 @@ const PersonalSignup = forwardRef(({ institute }, ref) => {
                         type="tel"
                         id="personal-phone"
                         className="form__field--input"
-                        {...register('personal.phone')}
+                        {...register('phone')}
                     />
                 </div>
             </label>
