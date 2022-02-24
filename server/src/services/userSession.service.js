@@ -1,7 +1,7 @@
 const boom = require('@hapi/boom');
 
 const { query } = require('../utils/database');
-const { LoginSessionError } = require('../utils/errors');
+const { HTTPError } = require('../utils/errors');
 
 const {
     Institute, PersonalData, Role, User
@@ -15,7 +15,7 @@ class UserSessionService {
             )
 
             if (data?.isAuth == 0)
-                throw new LoginSessionError("Credenciales Invalidas", 203);
+                throw new HTTPError("Credenciales Invalidas", 203);
 
             const user = new User({
                 idUser: data.idUser,
