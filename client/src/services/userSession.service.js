@@ -1,6 +1,6 @@
 const API = process.env.API;
 
-const getURLLogin = `${API}/login`;
+const getURLLogin = `${API}/user/login`;
 
 /**
  * It makes a request to the server to login a user.
