@@ -10,11 +10,8 @@ import {
     FaUserLock
 } from 'react-icons/fa';
 
-import { useWizard } from '@Components/Wizard';
-
 const PersonalSignup = forwardRef((props, ref) => {
     const { register } = useForm();
-    const { next } = useWizard();
     const [showPassword, setShowPassword] = useState(false);
 
     const handleShowPassword = (e) => {
@@ -23,7 +20,7 @@ const PersonalSignup = forwardRef((props, ref) => {
     }
 
     return (
-        <form ref={ref} className="form">
+        <form ref={ref} className="form hidden">
             <label htmlFor="personal-dni" className="form__content">
                 <span className="form__brand">
                     DNI
@@ -135,12 +132,11 @@ const PersonalSignup = forwardRef((props, ref) => {
                     />
                 </div>
             </label>
-            <button
-                className="form__btn form__btn--primary"
-                onClick={next}
-            >
-                Siguiente
-            </button>
+            <input
+				type="submit"
+				className="form__btn form__btn--primary"
+				value="Registrar cuenta"
+			/>
         </form>
     )
 })

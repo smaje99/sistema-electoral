@@ -12,10 +12,10 @@ import { useWizard } from '@Components/Wizard';
 
 const InstituteSignup = forwardRef((props, ref) => {
 	const { register } = useForm();
-	const { back } = useWizard();
+	const { next } = useWizard();
 
 	return (
-		<form ref={ref} className="form hidden">
+		<form ref={ref} className="form">
 			<label htmlFor="institute-name" className="form__content">
                 <span className="form__brand">
                     Nombre de la institución
@@ -89,14 +89,8 @@ const InstituteSignup = forwardRef((props, ref) => {
 			<input
 				type="submit"
 				className="form__btn form__btn--primary"
-				value="Registrar cuentas"
+				value="Registrar institución"
 			/>
-            <button
-				className="form__btn form__btn--primary"
-				onClick={back}
-			>
-				Anterior
-			</button>
         </form>
 	)
 })
