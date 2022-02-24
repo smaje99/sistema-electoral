@@ -1,5 +1,6 @@
-import { forwardRef } from 'react';
+import { forwardRef, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 import {
 	FaCity,
     FaEnvelope,
@@ -10,12 +11,34 @@ import {
 
 import { useWizard } from '@Components/Wizard';
 
-const InstituteSignup = forwardRef((props, ref) => {
-	const { register } = useForm();
+import config from '@Utils/config';
+
+const InstituteSignup = forwardRef(({ handleInstitute }, ref) => {
+	const {
+        register,
+        handleSubmit,
+        reset,
+        formState: { errors }
+    } = useForm();
 	const { next } = useWizard();
 
+    const onSubmit = async (formData) => {
+        try {
+            reset();
+            next();
+        } catch (error) {
+            toast.error(error.message, config.toast);
+        }
+    }
+
+    useEffect(() => {
+        Object
+            .values(errors)
+            .forEach(({ message }) => toast.warning(message, config.toast))
+    }, [errors])
+
 	return (
-		<form ref={ref} className="form">
+		<form onSubmit={handleSubmit(onSubmit)} ref={ref} className="form">
 			<label htmlFor="institute-name" className="form__content">
                 <span className="form__brand">
                     Nombre de la institución

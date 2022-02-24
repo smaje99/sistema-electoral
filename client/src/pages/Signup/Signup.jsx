@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { Helmet } from 'react-helmet';
 
 import { Wizard, WizardProvider } from '@Components/Wizard';
@@ -11,6 +11,7 @@ import './style.css';
 const items = [ 'Institucional', 'Personal'];
 
 const Signup = () => {
+    const [idInstitute, setIdInstitute] = useState(null);
     const personalRef = useRef();
     const instituteRef = useRef();
     const elements = [ personalRef, instituteRef ];
@@ -31,8 +32,8 @@ const Signup = () => {
             <WizardProvider {...{ items, handleNext }}>
                 <Wizard />
                 <section className="form--shadow signup__register">
-                    <InstituteSignup ref={instituteRef} />
-                    <PersonalSignup ref={personalRef} />
+                    <InstituteSignup handleInstitute={setIdInstitute} ref={instituteRef} />
+                    <PersonalSignup institute={idInstitute} ref={personalRef} />
                 </section>
             </WizardProvider>
         </main>

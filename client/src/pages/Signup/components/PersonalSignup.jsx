@@ -1,5 +1,6 @@
-import { forwardRef, useState } from 'react';
+import { forwardRef, useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 import {
     FaEnvelope,
     FaEye,
@@ -10,8 +11,13 @@ import {
     FaUserLock
 } from 'react-icons/fa';
 
-const PersonalSignup = forwardRef((props, ref) => {
-    const { register } = useForm();
+const PersonalSignup = forwardRef(({ institute }, ref) => {
+    const {
+        register,
+        handleSubmit,
+        reset,
+        formState: { errors }
+    } = useForm();
     const [showPassword, setShowPassword] = useState(false);
 
     const handleShowPassword = (e) => {
@@ -19,8 +25,23 @@ const PersonalSignup = forwardRef((props, ref) => {
         setShowPassword(currShow => !currShow);
     }
 
+    const onSubmit = async (formData) => {
+        try {
+            reset();
+            next();
+        } catch (error) {
+            toast.error(error.message, config.toast);
+        }
+    }
+
+    useEffect(() => {
+        Object
+            .values(errors)
+            .forEach(({ message }) => toast.warning(message, config.toast))
+    }, [errors])
+
     return (
-        <form ref={ref} className="form hidden">
+        <form onSubmit={handleSubmit(onSubmit)} ref={ref} className="form hidden">
             <label htmlFor="personal-dni" className="form__content">
                 <span className="form__brand">
                     DNI
