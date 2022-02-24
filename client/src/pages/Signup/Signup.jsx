@@ -9,7 +9,7 @@ import InstituteSignup from './components/InstituteSignup';
 import PersonalSignup from './components/PersonalSignup';
 
 import useAuth from '@Auth/useAuth';
-import { createAccount as service } from '@Services/admin.service';
+import { createAccount as service } from '@Services/user/admin.service';
 import resolver from '@Resolvers/signup.resolver';
 
 import routes from '@Helpers/routes';
