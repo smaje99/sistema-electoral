@@ -1,11 +1,11 @@
 const boom = require('@hapi/boom');
 
-const { query } = require('../utils/database');
-const { HTTPError } = require('../utils/errors');
+const { query } = require('../../utils/database');
+const { HTTPError } = require('../../utils/errors');
 
 const {
     Institute, PersonalData, Role, User
-} = require('../models');
+} = require('../../models');
 
 class UserSessionService {
     async login(email, password) {

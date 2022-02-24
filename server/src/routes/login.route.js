@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-const service = require('../services/userSession.service');
+const service = require('../services/user.service/session.service');
 
 const { HTTPError } = require('../utils/errors');
 const schema = require('../utils/schemas/login.schema');
