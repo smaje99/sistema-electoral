@@ -12,6 +12,7 @@ import {
 import { useWizard } from '@Components/Wizard';
 
 import { instituteResolver } from '@Resolvers/signup.resolver';
+import service from '@Services/institute/institute.service';
 
 import config from '@Utils/config';
 
@@ -25,11 +26,20 @@ const InstituteSignup = forwardRef(({ handleInstitute }, ref) => {
 	const { next } = useWizard();
 
     const onSubmit = async (formData) => {
+        const id = toast.loading('Creando institución', config.toast);
         try {
+            const idInstitute = await service.create(formData);
+            handleInstitute(idInstitute);
             reset();
+            toast.update(id, {
+                render: 'Institución creada correctamente',
+                type: 'success', isLoading: false, ...config.toast
+            });
             next();
         } catch (error) {
-            toast.error(error.message, config.toast);
+            toast.update(id, {
+                render: error.message, type: 'error', isLoading: false, ...config.toast
+            });
         }
     }
 
@@ -51,7 +61,7 @@ const InstituteSignup = forwardRef(({ handleInstitute }, ref) => {
                         type="text"
                         id="institute-name"
                         className="form__field--input"
-                        {...register('institute.name')}
+                        {...register('name')}
                     />
                 </div>
             </label>
@@ -65,7 +75,7 @@ const InstituteSignup = forwardRef(({ handleInstitute }, ref) => {
                         type="text"
                         id="institute-nit"
                         className="form__field--input"
-                        {...register('institute.nit')}
+                        {...register('nit')}
                     />
                 </div>
             </label>
@@ -79,7 +89,7 @@ const InstituteSignup = forwardRef(({ handleInstitute }, ref) => {
                         type="email"
                         id="institute-email"
                         className="form__field--input"
-                        {...register('institute.email')}
+                        {...register('email')}
                     />
                 </div>
             </label>
@@ -93,7 +103,7 @@ const InstituteSignup = forwardRef(({ handleInstitute }, ref) => {
                         type="text"
                         id="institute-address"
                         className="form__field--input"
-                        {...register('institute.address')}
+                        {...register('address')}
                     />
                 </div>
             </label>
@@ -107,7 +117,7 @@ const InstituteSignup = forwardRef(({ handleInstitute }, ref) => {
                         type="tel"
                         id="institute-phone"
                         className="form__field--input"
-                        {...register('institute.phone')}
+                        {...register('phone')}
                     />
                 </div>
             </label>
