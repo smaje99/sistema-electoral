@@ -9,7 +9,7 @@ import InstituteSignup from './components/InstituteSignup';
 import PersonalSignup from './components/PersonalSignup';
 
 import useAuth from '@Auth/useAuth';
-import { createAccount as service } from '@Services/user/admin.service';
+import service from '@Services/user/admin.service';
 import resolver from '@Resolvers/signup.resolver';
 
 import routes from '@Helpers/routes';
@@ -42,7 +42,7 @@ const Signup = () => {
         try {
             console.log({ personal, institute });
             // Send the registration data to the service and get the session data
-            const sessionData = await service(personal, institute);
+            const sessionData = await service.create(personal, institute);
             console.log(sessionData);
             // Restore personal and institutional registration forms
             methods.reset();
