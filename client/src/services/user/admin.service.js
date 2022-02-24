@@ -1,6 +1,6 @@
 const API = process.env.API;
 
-const getURLAdmin = `${API}/admin`;
+const getURLAdmin = `${API}/user/admin`;
 
 class AdminService {
     async create(userData) {
