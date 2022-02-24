@@ -1,5 +1,5 @@
 import { forwardRef, useState } from 'react';
-import { useFormContext } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import {
     FaEnvelope,
     FaEye,
@@ -13,7 +13,7 @@ import {
 import { useWizard } from '@Components/Wizard';
 
 const PersonalSignup = forwardRef((props, ref) => {
-    const { register } = useFormContext();
+    const { register } = useForm();
     const { next } = useWizard();
     const [showPassword, setShowPassword] = useState(false);
 
@@ -23,7 +23,7 @@ const PersonalSignup = forwardRef((props, ref) => {
     }
 
     return (
-        <section ref={ref} className="form">
+        <form ref={ref} className="form">
             <label htmlFor="personal-dni" className="form__content">
                 <span className="form__brand">
                     DNI
@@ -141,7 +141,7 @@ const PersonalSignup = forwardRef((props, ref) => {
             >
                 Siguiente
             </button>
-        </section>
+        </form>
     )
 })
 

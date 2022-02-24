@@ -1,5 +1,5 @@
 import { forwardRef } from 'react';
-import { useFormContext } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import {
 	FaCity,
     FaEnvelope,
@@ -11,11 +11,11 @@ import {
 import { useWizard } from '@Components/Wizard';
 
 const InstituteSignup = forwardRef((props, ref) => {
-	const { register } = useFormContext();
+	const { register } = useForm();
 	const { back } = useWizard();
 
 	return (
-		<section ref={ref} className="form hidden">
+		<form ref={ref} className="form hidden">
 			<label htmlFor="institute-name" className="form__content">
                 <span className="form__brand">
                     Nombre de la institución
@@ -97,7 +97,7 @@ const InstituteSignup = forwardRef((props, ref) => {
 			>
 				Anterior
 			</button>
-        </section>
+        </form>
 	)
 })
 
