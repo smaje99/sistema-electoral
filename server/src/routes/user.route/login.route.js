@@ -1,10 +1,10 @@
 const router = require('express').Router();
 
-const service = require('../services/user.service/session.service');
+const service = require('../../services/user.service/session.service');
 
-const { HTTPError } = require('../utils/errors');
-const schema = require('../utils/schemas/login.schema');
-const validation = require('../utils/middleware/validation.handler');
+const { HTTPError } = require('../../utils/errors');
+const schema = require('../../utils/schemas/login.schema');
+const validation = require('../../utils/middleware/validation.handler');
 
 router.post('/', validation(schema), async (req, res, next) => {
     const { email, password } = req.body;
