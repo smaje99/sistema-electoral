@@ -10,8 +10,11 @@ class InstituteService {
                 body: JSON.stringify(instituteData),
                 headers: { 'Content-type': 'application/json' }
             })
-            const idInstitute = await res.json();
-            return idInstitute;
+            const data = await res.json();
+
+            if (data.error) throw data.message;
+
+            return data.idInstitute;
         } catch (error) {
             throw new Error(error);
         }
