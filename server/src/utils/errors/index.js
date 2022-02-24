@@ -1,3 +1,3 @@
 module.exports = {
-    HTTPError: require('./loginSession.error')
+    HTTPError: require('./http.error')
 }
