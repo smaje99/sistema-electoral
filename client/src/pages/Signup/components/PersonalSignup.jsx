@@ -11,11 +11,14 @@ import {
     FaUserLock
 } from 'react-icons/fa';
 
+import useAuth from '@Auth/useAuth';
 import { personalResolver } from '@Resolvers/signup.resolver';
+import service from '@Services/user/admin.service';
 
 import config from '@Utils/config';
 
 const PersonalSignup = forwardRef(({ institute }, ref) => {
+    const { login } = useAuth();
     const {
         register,
         handleSubmit,
@@ -30,11 +33,19 @@ const PersonalSignup = forwardRef(({ institute }, ref) => {
     }
 
     const onSubmit = async (formData) => {
+        const id = toast.loading('Creando cuenta personal del Administrador', config.toast);
         try {
+            const sessionData = await service.create(formData, institute);
             reset();
-            next();
+            toast.update(id, {
+                render: 'Cuenta creada correctamente',
+                type: 'success', isLoading: false, ...config.toast
+            });
+            login(sessionData, routes.dashboard());
         } catch (error) {
-            toast.error(error.message, config.toast);
+            toast.update(id, {
+                render: error.message, type: 'error', isLoading: false, ...config.toast
+            });
         }
     }
 
