@@ -16,7 +16,7 @@ class SessionService {
             })
             const data = await res.json();
 
-            if (data.error) throw new data.message;
+            if (data.error) throw data.message;
             if (!data.isActive) throw new Error('Usuario no activo');
 
             return data;
