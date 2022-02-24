@@ -8,10 +8,12 @@ const {
 
 class AdminService {
     async createAccount(accountData) {
+        const {dni, name, email, password, gender, phone} = accountData;
+
         try {
             const [[[sessionData]]] = query(
                 'CALL spAdmin_Insert(?, ?, ?, ?, ?, ?, ?)',
-                Object.values(accountData)
+                [dni, name, email, password, gender, phone]
             )
 
             const user = new User({

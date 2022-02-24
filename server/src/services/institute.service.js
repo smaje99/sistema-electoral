@@ -4,10 +4,12 @@ const { query } = require('../utils/database');
 
 class InstituteService {
     async create(institute) {
+        const {name, nit, email, address, phone} = institute;
+
         try {
             const [[[idInstitute]]] = await query(
                 'CALL spInstitute_Insert(?, ?, ?, ?, ?)',
-                Object.values(institute)
+                [nit, name, address, email, phone]
             );
             return idInstitute;
         } catch (error) {
