@@ -11,13 +11,17 @@ import {
     FaUserLock
 } from 'react-icons/fa';
 
+import { personalResolver } from '@Resolvers/signup.resolver';
+
+import config from '@Utils/config';
+
 const PersonalSignup = forwardRef(({ institute }, ref) => {
     const {
         register,
         handleSubmit,
         reset,
         formState: { errors }
-    } = useForm();
+    } = useForm({ resolver: personalResolver });
     const [showPassword, setShowPassword] = useState(false);
 
     const handleShowPassword = (e) => {

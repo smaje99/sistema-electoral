@@ -11,6 +11,8 @@ import {
 
 import { useWizard } from '@Components/Wizard';
 
+import { instituteResolver } from '@Resolvers/signup.resolver';
+
 import config from '@Utils/config';
 
 const InstituteSignup = forwardRef(({ handleInstitute }, ref) => {
@@ -19,7 +21,7 @@ const InstituteSignup = forwardRef(({ handleInstitute }, ref) => {
         handleSubmit,
         reset,
         formState: { errors }
-    } = useForm();
+    } = useForm({ resolver: instituteResolver });
 	const { next } = useWizard();
 
     const onSubmit = async (formData) => {
