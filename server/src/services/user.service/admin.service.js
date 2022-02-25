@@ -32,7 +32,7 @@ class AdminService {
 
             return user;
         } catch (error) {
-            throw boom.badImplementation(error);
+            throw boom.badImplementation(error, error.message);
         }
     }
 }

@@ -29,11 +29,14 @@ function wrapErrors(err, req, res, next) {
 
 /** A middleware function that handles errors. */
 function errorHandler(err, req, res, next) {
-    const {
+    let {
         output: { statusCode, payload },
         headers,
         stack
     } = err;
+
+    if (statusCode == 500 && err.data)
+        payload = { ...payload, message: err.data };
 
     res.status(statusCode)
         .json(withErrorStack({ ...payload, headers }, stack))
