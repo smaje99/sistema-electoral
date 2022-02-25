@@ -15,6 +15,7 @@ import useAuth from '@Auth/useAuth';
 import { personalResolver } from '@Resolvers/signup.resolver';
 import service from '@Services/user/admin.service';
 
+import routes from '@Helpers/routes';
 import config from '@Utils/config';
 
 const PersonalSignup = forwardRef(({ institute }, ref) => {
