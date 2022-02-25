@@ -36,3 +36,11 @@ insert into permission (menu, `action`)
         (7, 1),  -- 15
         (7, 2),  -- 16
         (7, 3);  -- 17
+
+insert into `role` (`name`)
+    values
+        ("Administrador"),  -- 1
+        ("Administrativo"),  -- 2
+        ("Comite Electoral"),  -- 3
+        ("Docente"),  -- 4
+        ("Estudiante");  -- 5
