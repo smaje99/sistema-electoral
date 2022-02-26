@@ -45,6 +45,14 @@ insert into `role` (`name`)
         ("Docente"),  -- 4
         ("Estudiante");  -- 5
 
+insert into instituterole (institute, `role`)
+    values
+        (1, 1),  -- 1
+        (1, 2),  -- 2
+        (1, 3),  -- 3
+        (1, 4),  -- 4
+        (1, 5);  -- 5
+
 insert into rolepermission (`role`, permission)
     values
         (1, 1),  -- 1
