@@ -5,8 +5,8 @@ create table if not exists election.`user` (
  	`isActive` bool NOT NULL DEFAULT true,
  	`personalData` int unsigned NOT NULL,
  	`institute` int unsigned NOT NULL,
- 	`role` int unsigned NOT NULL,
+ 	`instituterole` int unsigned NOT NULL,
  	FOREIGN KEY (`personalData`) REFERENCES `personaldata` (`idPersonalData`),
  	FOREIGN KEY (`institute`) REFERENCES `institute` (`idInstitute`),
- 	FOREIGN KEY (`role`) REFERENCES `role` (`idRole`)
+ 	FOREIGN KEY (`instituterole`) REFERENCES `instituterole` (`idInstituteRole`)
 );
