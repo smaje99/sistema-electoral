@@ -32,9 +32,9 @@ class UserSessionService {
             }),
             institute: new Institute({
                 idInstitute: data.idInstitute,
-                name: data.nameInstitute
+                name: data.institute
             }),
-            role: new Role({ idRole: data.idRole, name: data.nameRole })
+            role: new Role({ idRole: data.idInstituteRole, name: data.role })
         });
         return user;
     }
