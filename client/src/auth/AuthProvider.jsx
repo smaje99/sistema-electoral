@@ -17,8 +17,19 @@ export const AuthProvider = ({ children }) => {
 
     const isLogged = () => !!user;
 
+    const hasPermission = ({ menu, action }) => {
+        const menuAux = user
+            ?.permissions
+            .find(permission => permission.menu === menu);
+        const actionAux = menuAux
+            ?.actions
+            .find(data => data.action === action);
+        return !!(actionAux?.isActive);
+    }
+
     const contextValue = {
         user,
+        hasPermission,
         isLogged,
         login,
         logout
