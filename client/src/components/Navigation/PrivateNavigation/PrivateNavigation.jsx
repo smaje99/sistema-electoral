@@ -10,13 +10,9 @@ import './style.css';
 const PrivateNavigation = () => {
     const {
         logout,
+        hasPermission,
         user: { personalData: { name }, role, permissions }
     } = useAuth();
-
-    const isView = (actions) => {
-        const view = actions.find(({ action }) => action === 'view');
-        return !!(view?.isActive);
-    }
 
     return (
         <aside className="navigation">
@@ -28,8 +24,8 @@ const PrivateNavigation = () => {
 
             <section className="navigation__menu">
                 <ul className="navigation__menu--list">
-                    {permissions.map(({ menu, route, actions }) => (
-                        isView(actions) && <Item {...{ menu, route }} />
+                    {permissions.map(({ menu, route }) => (
+                        hasPermission({ menu, action: 'view' }) && <Item {...{ menu, route }} />
                     ))}
                 </ul>
             </section>
