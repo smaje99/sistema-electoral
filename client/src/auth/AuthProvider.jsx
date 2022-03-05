@@ -17,7 +17,7 @@ export const AuthProvider = ({ children }) => {
 
     const isLogged = () => !!user;
 
-    const hasPermission = ({ menu, action }) => {
+    const hasPermission = (menu, action = 'view') => {
         const menuAux = user
             ?.permissions
             .find(permission => permission.menu === menu);

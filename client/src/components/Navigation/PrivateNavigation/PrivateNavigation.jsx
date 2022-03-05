@@ -25,7 +25,7 @@ const PrivateNavigation = () => {
             <section className="navigation__menu">
                 <ul className="navigation__menu--list">
                     {permissions.map(({ menu, route }) => (
-                        hasPermission({ menu, action: 'view' }) && <Item {...{ menu, route }} />
+                        hasPermission(menu) && <Item {...{ menu, route }} />
                     ))}
                 </ul>
             </section>
