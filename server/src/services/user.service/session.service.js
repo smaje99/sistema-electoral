@@ -15,24 +15,28 @@ class UserSessionService {
             if (data?.isAuth == 0)
                 throw new HTTPError("Credenciales Invalidas", 203);
 
-            const user = new User({
-                idUser: data.idUser,
-                isActive: data.isActive,
-                personalData: new PersonalData({
-                    idPersonalData: data.idPersonalData,
-                    name: data.name
-                }),
-                institute: new Institute({
-                    idInstitute: data.idInstitute,
-                    name: data.nameInstitute
-                }),
-                role: new Role({ idRole: data.idRole, name: data.nameRole })
-            })
-
+            const user = this.#createUser(data);
             return user;
         } catch (error) {
             throw boom.badImplementation(error);
         }
+    }
+
+    #createUser(data) {
+        const user = new User({
+            idUser: data.idUser,
+            isActive: data.isActive,
+            personalData: new PersonalData({
+                idPersonalData: data.idPersonalData,
+                name: data.name
+            }),
+            institute: new Institute({
+                idInstitute: data.idInstitute,
+                name: data.nameInstitute
+            }),
+            role: new Role({ idRole: data.idRole, name: data.nameRole })
+        });
+        return user;
     }
 }
 
