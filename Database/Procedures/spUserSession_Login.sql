@@ -8,7 +8,7 @@ begin
 	set @isAuth := (select fnCheckCrendentials(_email, _password));
 
 	if @isAuth = 1 then
-		call spUser_Get(_email);
+		call spUserSession_Get(_email);
 	else
 		select @isAuth as isAuth;
 	end if;
