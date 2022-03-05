@@ -53,7 +53,7 @@ insert into instituterole (institute, `role`)
         (1, 4),  -- 4
         (1, 5);  -- 5
 
-insert into rolepermission (`role`, permission)
+insert into rolepermission (instituterole, permission)
     values
         (1, 1),  -- 1
         (1, 2),  -- 2
