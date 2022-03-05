@@ -1,12 +1,11 @@
 import { NavLink, Link } from 'react-router-dom';
 
 import useAuth from '@Auth/useAuth';
-import items from '@Helpers/items';
 import routes from '@Helpers/routes';
 
 import './style.css';
 
-const Item = ({ name, route }) => (
+const Item = ({ menu, route }) => (
     <li className="navigation__menu--item">
         <NavLink
             className={({ isActive }) => (
@@ -14,7 +13,7 @@ const Item = ({ name, route }) => (
             )}
             to={route}
         >
-            {name}
+            {menu}
         </NavLink>
     </li>
 )
@@ -23,8 +22,13 @@ const Item = ({ name, route }) => (
 const PrivateNavigation = () => {
     const {
         logout,
-        user: { personalData: { name }, role }
+        user: { personalData: { name }, role, permissions }
     } = useAuth();
+
+    const isView = (actions) => {
+        const view = actions.find(({ action }) => action === 'view');
+        return !!(view?.isActive);
+    }
 
     return (
         <aside className="navigation">
@@ -35,12 +39,11 @@ const PrivateNavigation = () => {
             </section>
 
             <section className="navigation__menu">
-                {/* <ul className="navigation__menu--list">
-                    <Item {...items.info} />
-                    {permissions.map(permission => (
-                        <Item {...items[permission]} key={permission} />
+                <ul className="navigation__menu--list">
+                    {permissions.map(({ menu, route, actions }) => (
+                        isView(actions) && <Item {...{ menu, route }} />
                     ))}
-                </ul> */}
+                </ul>
             </section>
 
             <section className="navigation__logout">
