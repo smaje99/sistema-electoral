@@ -8,11 +8,17 @@ create procedure spInstitute_Insert (
     _phone varchar(15)
 )
 begin
+    -- create a institute
     insert
         into institute(nit, `name`, `address`, email, phone)
         values (_nit, _name, _address, _email, _phone);
 
     set @idInstitute := LAST_INSERT_ID();
+
+    -- create the admin role for the institute
+    insert
+        into instituterole(institute, `role`)
+        values (@idInstitute, 1);
 
     select @idInstitute as idInstitute;
 end;
