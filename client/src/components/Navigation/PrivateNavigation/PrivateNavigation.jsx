@@ -1,23 +1,11 @@
-import { NavLink, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
+import Item from './Item';
 
 import useAuth from '@Auth/useAuth';
 import routes from '@Helpers/routes';
 
 import './style.css';
-
-const Item = ({ menu, route }) => (
-    <li className="navigation__menu--item">
-        <NavLink
-            className={({ isActive }) => (
-                'navigation__menu--'.concat(isActive ? 'active' : 'link')
-            )}
-            to={route}
-        >
-            {menu}
-        </NavLink>
-    </li>
-)
-
 
 const PrivateNavigation = () => {
     const {
