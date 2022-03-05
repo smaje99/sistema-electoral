@@ -1,4 +1,5 @@
 module.exports = {
+    Action: require('./action.model'),
     Institute: require('./institute.model'),
     Permission: require('./permission.model'),
     PersonalData: require('./personalData.model'),
