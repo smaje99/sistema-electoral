@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 
+import PermissionRoute from './PermissionRoute';
 import PrivateRoutes from './PrivateRoutes';
 
 import { PrivateLayout, PublicLayout } from '@Components/Layout';
@@ -11,6 +12,8 @@ import Login from '@Pages/Login';
 import Signup from '@Pages/Signup';
 import NotFound from '@Pages/NotFound';
 import Welcome from '@Pages/Welcome';
+
+import menus from '@Helpers/menus';
 
 const AppRouter = () => (
     <Routes>
@@ -25,7 +28,9 @@ const AppRouter = () => (
                 <Route path="dashboard" element={<PrivateLayout />}>
                     <Route element={<Dashboard />}>
                         <Route index element={<Welcome />} />
-                        <Route path="info" element={<Info />} />
+                        <Route element={<PermissionRoute menu={menus.info} />}>
+                            <Route path="info" element={<Info />} />
+                        </Route>
                     </Route>
                 </Route>
             </Route>
