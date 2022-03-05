@@ -1,5 +1,7 @@
 use election;
 
+drop procedure if exists spAdmin_Insert;
+
 create procedure spAdmin_Insert(
     _email varchar(50),
     `_password` varchar(50),
@@ -17,10 +19,21 @@ begin
 
     set @idPersonalData := LAST_INSERT_ID();
 
+    -- Get institute role id
+    set @idInstituteRole := (
+        select
+            idInstituteRole
+        from
+            instituterole
+        where
+            institute = _idInstitute
+            and `role` = 1
+    );
+
     -- insert into to user
     insert
-        into `user`(email, `password`, personaldata, institute, `role`)
-        values (_email, `_password`, @idPersonalData, _idInstitute, 1);
+        into `user`(email, `password`, personaldata, institute, instituterole)
+        values (_email, `_password`, @idPersonalData, _idInstitute, @idInstituteRole);
 
     -- returns the user's session information
     call spUserSession_Login(_email, `_password`);
