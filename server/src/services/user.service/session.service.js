@@ -4,7 +4,12 @@ const { query } = require('../../utils/database');
 const { HTTPError } = require('../../utils/errors');
 
 const {
-    Institute, Permission, PersonalData, Role, User
+    Action,
+    Institute,
+    Permission,
+    PersonalData,
+    Role,
+    User
 } = require('../../models');
 
 class UserSessionService {
@@ -52,12 +57,13 @@ class UserSessionService {
 
         let permissions = new Map();
         permissionsData.forEach(({ menu, route, action, isActive }) => {
+            const newAction = new Action({ action, isActive });
             if (permissions.has(menu)) {
                 const permission = permissions.get(menu);
-                permission.addAction(action);
+                permission.addAction(newAction);
             } else {
-                const permission = new Permission({ menu, route, isActive });
-                permission.addAction(action);
+                const permission = new Permission({ menu, route });
+                permission.addAction(newAction);
                 permissions.set(menu, permission);
             }
         });

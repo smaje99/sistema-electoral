@@ -1,9 +1,8 @@
 class Permission {
-    constructor({ menu, route, isActive }) {
+    constructor({ menu, route }) {
         this.menu = menu;
         this.route = route;
         this.actions = [];
-        this.isActive = !!isActive;
     }
 
     addAction(action) {
