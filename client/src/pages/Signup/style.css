@@ -10,15 +10,10 @@
 
 .signup .wizard {
     width: 50vw;
+    margin-top: 2rem;
 }
 
 .signup__register {
     width: 40vw;
     margin-bottom: 8rem;
-}
-
-.signup--title {
-    font-size: 20pt;
-    text-align: center;
-    margin-bottom: 0;
 }

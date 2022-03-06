@@ -3,18 +3,22 @@ import { Helmet } from 'react-helmet';
 
 import { Wizard, WizardProvider } from '@Components/Wizard';
 
+import ChargeSignup from './components/ChargeSignup';
 import InstituteSignup from './components/InstituteSignup';
 import PersonalSignup from './components/PersonalSignup';
+import RoleSignup from './components/RoleSignup';
+
+import items from '@Helpers/items';
 
 import './style.css';
-
-const items = [ 'Institucional', 'Personal'];
 
 const Signup = () => {
     const [idInstitute, setIdInstitute] = useState(null);
     const personalRef = useRef();
     const instituteRef = useRef();
-    const elements = [ personalRef, instituteRef ];
+    const roleRef = useRef();
+    const chargeRef = useRef();
+    const elements = [ personalRef, instituteRef, roleRef, chargeRef ];
 
     const handleNext = (index) => {
         elements[index + 1]?.current.classList.toggle('hidden');
@@ -28,12 +32,13 @@ const Signup = () => {
         </Helmet>
 
         <main className="signup">
-            <h1 className="signup--title">Crear cuenta</h1>
             <WizardProvider {...{ items, handleNext }}>
                 <Wizard />
                 <section className="form--shadow signup__register">
                     <InstituteSignup handleInstitute={setIdInstitute} ref={instituteRef} />
                     <PersonalSignup institute={idInstitute} ref={personalRef} />
+                    <RoleSignup institute={idInstitute} ref={roleRef} />
+                    <ChargeSignup institute={idInstitute} ref={chargeRef} />
                 </section>
             </WizardProvider>
         </main>
